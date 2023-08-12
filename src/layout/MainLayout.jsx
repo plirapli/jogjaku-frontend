@@ -1,11 +1,11 @@
-import { NavbarMenu } from '../components/';
+import { NavbarMenu, Footer } from '../components/';
 
 const MainLayout = ({ children }) => {
   return (
     <div className='min-h-screen bg-secondary flex flex-col'>
       <NavbarMenu />
       <div className='flex-1'>{children}</div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
