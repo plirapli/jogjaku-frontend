@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .footer {
+    display: grid;
+    width: 100%;
+    grid-auto-flow: row;
+    place-items: start;
+    row-gap: 2.5rem;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .footer > * {
+    display: grid;
+    place-items: start;
+    gap: 0.5rem;
+  }
+
+  .footer-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  @media (min-width: 48rem) {
+    .footer {
+      grid-auto-flow: column;
+    }
+  }
+}
