@@ -1,3 +1,4 @@
 import NavbarMenu from "./NavbarMenu";
+import Footer from "./Footer";
 
-export { NavbarMenu }
+export { NavbarMenu, Footer }

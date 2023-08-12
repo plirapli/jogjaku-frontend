@@ -7,8 +7,6 @@ const NavbarMenu = () => {
     { title: 'Event', href: '/event' },
   ];
 
-  console.log(listItems.map((listItem) => listItem.title));
-
   return (
     <nav className='bg-yellow-50 fixed w-full z-20 top-0 left-0 border-b border-gray-200'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
