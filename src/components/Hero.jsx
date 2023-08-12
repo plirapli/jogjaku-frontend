@@ -5,7 +5,7 @@ const Hero = () => {
     <ConstraintLarge>
       <div
         id='controls-carousel'
-        className='-z-10 relative w-full'
+        className='z-0 relative w-full'
         data-carousel='static'
       >
         <div className='relative h-64 overflow-hidden rounded-lg md:h-96'>
