@@ -34,6 +34,11 @@
     overflow: hidden;
   }
 
+  .link {
+    cursor: pointer;
+    text-decoration-line: underline;
+  }
+
   @media (min-width: 48rem) {
     .footer {
       grid-auto-flow: column;
