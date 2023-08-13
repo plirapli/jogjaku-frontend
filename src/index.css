@@ -27,6 +27,12 @@
     opacity: 0.5;
   }
 
+  .layout {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
   .clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
