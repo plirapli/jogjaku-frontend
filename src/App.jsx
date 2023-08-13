@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
-import { DestinasiPage, MainPage } from './pages';
+import { DestinasiPage, EventPage, MainPage } from './pages';
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
           <Routes>
             <Route index path='/' element={<MainPage />} />
             <Route index path='/destinasi' element={<DestinasiPage />} />
+            <Route index path='/event' element={<EventPage />} />
           </Routes>
         </MainLayout>
       </Suspense>

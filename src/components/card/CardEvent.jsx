@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import defaultCover from '../../assets/default-destination.jpg';
 
-const CardDestinasi = ({ work }) => {
+const CardEvent = ({ work }) => {
   const imgCover = work?.img_cover || defaultCover;
 
   return (
@@ -25,4 +25,4 @@ const CardDestinasi = ({ work }) => {
   );
 };
 
-export default CardDestinasi;
+export default CardEvent;
