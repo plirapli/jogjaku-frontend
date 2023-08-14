@@ -5,7 +5,7 @@ const CardDestinasi = ({ work }) => {
   const imgCover = work?.img_cover || defaultCover;
 
   return (
-    <Link>
+    <Link to={`/destinasi/1`}>
       <div className='flex flex-col justify-end border rounded-md shadow overflow-hidden relative h-80 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1'>
         <img
           src={imgCover}
