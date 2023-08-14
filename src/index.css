@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  .layout {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .link {
+    cursor: pointer;
+    text-decoration-line: underline;
+  }
+}
+
+@layer components {
   .footer {
     display: grid;
     width: 100%;
@@ -27,27 +47,21 @@
     opacity: 0.5;
   }
 
-  .layout {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-
-  .clamp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-
-  .link {
-    cursor: pointer;
-    text-decoration-line: underline;
-  }
-
   @media (min-width: 48rem) {
     .footer {
       grid-auto-flow: column;
     }
+  }
+
+  .tab {
+    @apply inline-block p-4 border-b-2 rounded-t-lg;
+  }
+
+  .tab-active {
+    @apply text-blue-600 border-blue-600;
+  }
+
+  .tab-inactive {
+    @apply border-transparent hover:text-gray-600 hover:border-gray-300;
   }
 }
