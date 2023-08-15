@@ -53,7 +53,7 @@ const EventPage = () => {
             <LoadingIcon />
           </div>
         ) : filteredWorks.length ? ( */}
-        <div className='mt-4 layout'>
+        <div className='mt-4 flex flex-col gap-4'>
           {/* {filteredWorks.map((work) => ( */}
           <CardEvent />
           <CardEvent />

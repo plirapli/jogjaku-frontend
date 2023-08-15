@@ -1,25 +1,31 @@
 import { Link } from 'react-router-dom';
 import defaultCover from '../../assets/default-destination.jpg';
+import { Icon } from '@iconify/react';
 
 const CardEvent = ({ work }) => {
   const imgCover = work?.img_cover || defaultCover;
 
   return (
     <Link>
-      <div className='flex flex-col justify-end border rounded-md shadow overflow-hidden relative h-80 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1'>
-        <img
-          src={imgCover}
-          alt=''
-          className='-z-10 absolute object-cover h-full w-full'
-        />
-        <div className='flex flex-col p-4 backdrop-blur-sm bg-black/40 text-white'>
-          <div className='text-xl text-primary capitalize font-medium clamp'>
+      <div className='h-32 flex border rounded-md shadow overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1'>
+        <div className='w-full flex flex-col px-4 py-3'>
+          <div className='w-full text-lg capitalize font-semibold clamp'>
             Candi Borobudur
           </div>
-          <div className='flex-1 text-white text-opacity-75'>
-            Borobudur Temple
+          <div className='mt-0.5 -ml-0.5 flex items-center gap-1.5 text-sm text-black text-opacity-40'>
+            <Icon icon='iconamoon:profile' width='20' />
+            <div>Rajawali Indonesia</div>
+            <div>∙</div>
+            <div>17 Agustus 2023</div>
+          </div>
+          <div className='flex-1 mt-2 text-sm text-gray-500 clamp'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            laudantium voluptatem repudiandae, accusantium dignissimos optio
+            repellendus nobis iste cum inventore minima esse consectetur atque
+            mollitia quod officia ullam earum corporis?
           </div>
         </div>
+        <img src={imgCover} alt='' className='object-cover' />
       </div>
     </Link>
   );
