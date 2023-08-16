@@ -1,8 +1,13 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
-import DestinasiLayout from './layout/DestinasiLayout';
-import { DestinasiPage, EventPage, MainPage } from './pages';
+import { MainLayout, DestinasiLayout } from './layout/';
+import {
+  DestinasiPage,
+  EventPage,
+  KeranjangPage,
+  MainPage,
+  TiketSayaPage,
+} from './pages';
 import * as Destinasi from './pages/destinasi';
 
 const App = () => {
@@ -18,6 +23,9 @@ const App = () => {
               <Route index path='tiket' element={<Destinasi.TiketPage />} />
             </Route>
             <Route path='/event' element={<EventPage />} />
+            <Route path='/profil' element={<KeranjangPage />} />
+            <Route path='/keranjang' element={<KeranjangPage />} />
+            <Route path='/tiket-saya' element={<TiketSayaPage />} />
           </Routes>
         </MainLayout>
       </Suspense>
