@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const NavbarMenu = () => {
   const listItems = [
@@ -52,7 +52,7 @@ const NavbarMenu = () => {
             <ul className='py-2' aria-labelledby='user-menu-button'>
               <li>
                 <Link
-                  to='/'
+                  to='/profil'
                   className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                 >
                   <Icon icon='iconamoon:profile' width='16' />
@@ -60,13 +60,19 @@ const NavbarMenu = () => {
                 </Link>
               </li>
               <li>
-                <Link className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+                <Link
+                  to='keranjang'
+                  className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                >
                   <Icon icon='mdi:cart-outline' width='16' />
                   Keranjang
                 </Link>
               </li>
               <li>
-                <Link className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+                <Link
+                  to='tiket-saya'
+                  className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                >
                   <Icon icon='mdi:ticket-outline' width='16' />
                   Tiket Saya
                 </Link>
@@ -124,15 +130,27 @@ const NavbarMenu = () => {
   );
 };
 
+<NavLink
+  to='/destinasi/1'
+  end
+  className={({ isActive, isPending }) =>
+    isPending ? '' : isActive ? 'tab tab-active' : 'tab tab-inactive'
+  }
+>
+  Deskripsi
+</NavLink>;
+
 const ListItem = ({ href, children, ...props }) => (
   <li>
-    <Link
+    <NavLink
       to={href}
-      className='block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'
+      className={({ isActive, isPending }) =>
+        isPending ? '' : isActive ? 'nav nav-active' : 'nav nav-inactive'
+      }
       {...props}
     >
       {children}
-    </Link>
+    </NavLink>
   </li>
 );
 
