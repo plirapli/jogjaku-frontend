@@ -1,7 +1,7 @@
 const DeskripsiPage = () => {
   return (
     <div>
-      <h1 className='text-lg font-medium'>Deskripsi Umum</h1>
+      <h2 className='text-lg font-medium'>Deskripsi Umum</h2>
       <div className='mt-2 flex flex-col gap-2'>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,

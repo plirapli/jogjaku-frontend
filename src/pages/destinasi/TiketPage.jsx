@@ -1,10 +1,9 @@
 import { Icon } from '@iconify/react';
-import DatePicker from '../../components/DatePicker';
 
 const TiketPage = () => {
   return (
     <div>
-      <h1 className='text-lg leading-tight font-medium'>Beli Tiket</h1>
+      <h2 className='text-lg leading-tight font-medium'>Beli Tiket</h2>
       <p className='text-black text-opacity-50'>Candi Borobudur</p>
       <div className='divider'></div>
       {/* Form */}

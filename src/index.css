@@ -23,6 +23,18 @@
 }
 
 @layer components {
+  .nav {
+    @apply block py-2 pl-3 pr-4 rounded md:p-0;
+  }
+
+  .nav-active {
+    @apply text-yellow-400;
+  }
+
+  .nav-inactive {
+    @apply text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-400;
+  }
+
   .divider {
     @apply bg-gray-200;
     height: 1px;
