@@ -12,11 +12,20 @@ const CardEvent = ({ work }) => {
           <div className='w-full text-lg capitalize font-semibold clamp'>
             Candi Borobudur
           </div>
-          <div className='mt-0.5 -ml-0.5 flex items-center gap-1.5 text-sm text-black text-opacity-40'>
-            <Icon icon='iconamoon:profile' width='20' />
-            <div>Rajawali Indonesia</div>
-            <div>∙</div>
-            <div>17 Agustus 2023</div>
+          <div className='mt-0.5 -ml-0.5 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-1.5 text-sm text-black text-opacity-40'>
+            <div className='flex items-center gap-1'>
+              <Icon icon='iconamoon:profile' width='18' />
+              <div>Rajawali Indonesia</div>
+            </div>
+            <div className='hidden sm:block'>∙</div>
+            <div className='flex items-center gap-1'>
+              <Icon
+                className='block sm:hidden'
+                icon='material-symbols:date-range'
+                width='18'
+              />
+              <div>17 Agustus 2023</div>
+            </div>
           </div>
           <div className='flex-1 mt-2 text-sm text-gray-500 clamp'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
