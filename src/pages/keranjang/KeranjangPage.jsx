@@ -11,22 +11,28 @@ const KeranjangPage = () => {
         </h1>
         <p className='text-black text-opacity-40'>Lorem ipsum dolor sit amet</p>
         <div className='divider'></div>
-        <div className='flex items-start gap-3'>
+        <div className='flex flex-col lg:flex-row lg:items-start gap-3'>
           <div className='w-full space-y-3'>
             <CardTiketKeranjang />
             <CardTiketKeranjang />
             <CardTiketKeranjang />
           </div>
+
+          {/* Rincian harga */}
           <div className='w-full border px-4 py-3 rounded-md'>
             <h2 className='text-lg leading-tight font-medium mb-2'>
-              Beli Tiket
+              Rincian Harga
             </h2>
             <div className='divider my-1'></div>
+
+            {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
               <TableItemCart />
               <TableItemCart />
               <TableItemCart />
               <div className='divider my-1'></div>
+
+              {/* Total pembayaran */}
               <table className='w-full text-sm text-left text-gray-500'>
                 <tfoot>
                   <tr className='font-semibold dark:text-white'>
@@ -63,13 +69,6 @@ const KeranjangPage = () => {
                 Lanjutkan Pembayaran
               </button>
             </div>
-
-            {/* <div className='mt-1 flex flex-col gap-2 text-gray-500'>
-              <div>
-                1x Candi Borobudur (Domestik) - Dewasa (di atas 12 tahun) - Pagi
-                (06.00-14.00)
-              </div>
-            </div> */}
           </div>
         </div>
       </ConstraintLarge>

@@ -22,7 +22,7 @@ const TableItemCart = () => {
           </tr>
           <tr className='bg-white'>
             <td className='w-full pr-6 py-1.5 whitespace-nowrap dark:text-white'>
-              Magic Mouse 2
+              Dewasa (di atas 12 tahun), Pagi (06.00-14.00)
             </td>
             <td className='px-6 py-1.5'>1</td>
             <td className='px-2 py-1.5'>Rp</td>
