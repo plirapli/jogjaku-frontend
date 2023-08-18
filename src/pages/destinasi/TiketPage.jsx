@@ -1,13 +1,39 @@
 import { Icon } from '@iconify/react';
+import { CardBeliTiket } from '../../components/card';
 
 const TiketPage = () => {
   return (
     <div>
-      <h2 className='text-lg leading-tight font-medium'>Beli Tiket</h2>
-      <p className='text-black text-opacity-50'>Candi Borobudur</p>
+      <div className='flex flex-col gap-2 sm:flex-row sm:gap-4 items-center'>
+        <div className='w-full'>
+          <h2 className='text-lg font-medium'>Beli Tiket</h2>
+          <p className='text-black text-opacity-50'>Candi Borobudur</p>
+        </div>
+        <div className='w-full flex items-center gap-4'>
+          <label
+            htmlFor='first_name'
+            className='min-w-fit text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Pilih Tanggal
+          </label>
+          <input
+            type='date'
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+            placeholder='Select date'
+          />
+        </div>
+      </div>
       <div className='divider'></div>
+      <div className='space-y-3'>
+        <CardBeliTiket />
+        <CardBeliTiket />
+        <CardBeliTiket />
+        <CardBeliTiket />
+      </div>
+
       {/* Form */}
-      <form className='mt-2'>
+
+      {/* <form className='mt-2'>
         <div className='grid gap-3 mb-3 md:grid-cols-3'>
           <div>
             <label
@@ -26,19 +52,7 @@ const TiketPage = () => {
               <option value='turis'>Foreigner</option>
             </select>
           </div>
-          <div>
-            <label
-              htmlFor='first_name'
-              className='block mb-1.5 text-sm font-medium text-gray-900 dark:text-white'
-            >
-              Tanggal
-            </label>
-            <input
-              type='date'
-              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
-              placeholder='Select date'
-            />
-          </div>
+
           <div>
             <label
               htmlFor='last_name'
@@ -133,7 +147,7 @@ const TiketPage = () => {
             Tambah ke Keranjang
           </button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };
