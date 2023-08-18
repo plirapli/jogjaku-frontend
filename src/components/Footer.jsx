@@ -6,7 +6,7 @@ const Footer = () => {
           <div className='font-bold text-base text-accent'>
             Information Technology Club
           </div>
-          <div className='text-secondary'>
+          <div className='text-accent'>
             Universitas Pembangunan Nasional &quot;Veteran&quot; Yogyakarta
           </div>
         </div>
