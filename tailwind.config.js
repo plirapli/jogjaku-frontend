@@ -8,10 +8,26 @@ export default {
     "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#facc15',
+        secondary: '#fefce8',
+        secondaryHover: '#C4CFD0',
+        accent: '#422006',
+        gray: {
+          light: '#EAEAEA',
+          dark: '#7C7C7C',
+        },
+        danger: {
+          main: '#E42F2F',
+          sub: '#FFCCCC',
+          hover: '#E5B8B8',
+        },
+      },
+    },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
   ],
 }
 

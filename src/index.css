@@ -23,6 +23,58 @@
 }
 
 @layer components {
+  /* Button Component */
+  .text-only {
+    @apply w-full;
+  }
+  .icon-right {
+    @apply gap-3;
+  }
+  .icon-left {
+    @apply flex-row-reverse gap-3;
+  }
+  .icon-only {
+    @apply p-2.5;
+  }
+
+  /* Button size */
+  .text.small {
+    @apply text-sm;
+  }
+  .icon.small {
+    @apply text-lg;
+  }
+  .icon.medium {
+    @apply text-xl;
+  }
+
+  /* Button color */
+  .btn.primary {
+    @apply bg-primary text-white shadow-sm hover:bg-opacity-80;
+  }
+  .btn.secondary {
+    @apply bg-secondary text-primary shadow-sm hover:bg-secondaryHover;
+  }
+  .btn.gray {
+    @apply bg-black bg-opacity-10 text-black text-opacity-70 hover:bg-opacity-20;
+  }
+  .btn.danger {
+    @apply bg-danger-sub text-danger-main hover:bg-danger-hover;
+  }
+  .btn.transparent {
+    @apply text-white shadow-none hover:bg-white hover:bg-opacity-25;
+  }
+  /* End Button Component */
+
+  /* Input Component */
+  .input-primary {
+    @apply border-gray-300;
+  }
+  .input-secondary {
+    @apply bg-secondary border-primary placeholder:text-primary;
+  }
+  /* End Input Component */
+
   .nav {
     @apply block py-2 pl-3 pr-4 rounded md:p-0;
   }
