@@ -10,7 +10,7 @@ const CardDestinasi = ({ work }) => {
         <img
           src={imgCover}
           alt=''
-          className='-z-10 absolute object-cover h-full w-full'
+          className='absolute object-cover h-full w-full'
         />
         <div className='flex flex-col p-4 backdrop-blur-sm bg-black/40 text-white'>
           <div className='text-xl text-primary capitalize font-medium clamp'>
