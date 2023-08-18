@@ -21,7 +21,7 @@ const Event = () => {
         </Link>
       </div>
       <div className='w-full mt-3'>
-        <div className='w-full mt-3 space-y-4 sm:space-y-0 sm:grid grid-cols-2 xl:grid-cols-4 gap-4'>
+        <div className='w-full mt-3 flex flex-col gap-4'>
           <CardEvent />
           <CardEvent />
           <CardEvent />

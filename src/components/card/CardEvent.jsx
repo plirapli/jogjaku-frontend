@@ -7,7 +7,7 @@ const CardEvent = ({ work }) => {
 
   return (
     <Link>
-      <div className='h-32 flex border rounded-md shadow overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1'>
+      <div className='h-32 flex border rounded-md shadow-sm overflow-hidden cursor-pointer transition-all hover:shadow-md'>
         <div className='w-full flex flex-col px-4 py-3'>
           <div className='w-full text-lg capitalize font-semibold clamp'>
             Candi Borobudur
