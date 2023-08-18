@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react';
 import { ConstraintLarge } from '../../layout';
 import CardTiketKeranjang from '../../components/card/CardTiketKeranjang';
 import TableItemCart from '../../components/table/TableItemCart';

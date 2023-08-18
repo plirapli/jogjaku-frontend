@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
 import { Link, NavLink } from 'react-router-dom';
+import { Ava } from '../assets';
 
 const NavbarMenu = () => {
   const listItems = [
@@ -10,18 +11,18 @@ const NavbarMenu = () => {
 
   return (
     <nav className='bg-yellow-50 fixed w-full z-20 top-0 left-0 border-b border-gray-200'>
-      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3'>
+      <div className='max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3 gap-8'>
         {/* Logo */}
-        <a href='https://flowbite.com/' className='flex items-center'>
+        <Link to='/' className='flex items-center'>
           <img
             src='/src/assets/logo-primary.svg'
             className='h-8 mr-3'
             alt='Flowbite Logo'
           />
-        </a>
+        </Link>
 
         {/* Profil */}
-        <div className='flex items-center md:order-2'>
+        <div className='min-w-fit flex items-center md:order-2'>
           <button
             type='button'
             className='flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600'
@@ -31,11 +32,7 @@ const NavbarMenu = () => {
             data-dropdown-placement='bottom'
           >
             <span className='sr-only'>Open user menu</span>
-            <img
-              className='w-8 h-8 rounded-full'
-              src='/docs/images/people/profile-picture-3.jpg'
-              alt='user photo'
-            />
+            <img className='w-8 h-8 rounded-full' src={Ava} alt='user photo' />
           </button>
           <div
             className='z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600'
@@ -114,7 +111,7 @@ const NavbarMenu = () => {
 
         {/* Menu tengah */}
         <div
-          className='items-center justify-between hidden w-full md:flex md:w-auto md:order-1'
+          className='items-center hidden w-full md:block md:order-1'
           id='navbar-sticky'
         >
           <ul className='flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent'>
