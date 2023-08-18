@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { MainLayout, DestinasiLayout } from './layout/';
+import * as Layout from './layout/';
 import {
   DestinasiPage,
   EventPage,
@@ -8,17 +8,30 @@ import {
   MainPage,
   TiketSayaPage,
 } from './pages';
+import * as AuthPage from './pages/auth';
 import * as Destinasi from './pages/destinasi';
 
 const App = () => {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <MainLayout>
-          <Routes>
+        <Routes>
+          {/* <Route element={<Layout.Login />}>
+            <Route path='/*' element={<AuthPage.Login />} />
+            <Route
+              path='forgot-password/'
+              element={<AuthPage.ForgotPassword />}
+            />
+            <Route path='register/' element={<AuthPage.Register />} />
+            <Route path='tes/' element={<>Dah bisa</>} />
+          </Route> */}
+          <Route element={<Layout.Main />}>
             <Route index path='/' element={<MainPage />} />
             <Route path='/destinasi' element={<DestinasiPage />} />
-            <Route path='/destinasi/:destinasiID' element={<DestinasiLayout />}>
+            <Route
+              path='/destinasi/:destinasiID'
+              element={<Layout.Destinasi />}
+            >
               <Route index element={<Destinasi.DeskripsiPage />} />
               <Route index path='tiket' element={<Destinasi.TiketPage />} />
             </Route>
@@ -26,8 +39,8 @@ const App = () => {
             <Route path='/profil' element={<KeranjangPage />} />
             <Route path='/keranjang' element={<KeranjangPage />} />
             <Route path='/tiket-saya' element={<TiketSayaPage />} />
-          </Routes>
-        </MainLayout>
+          </Route>
+        </Routes>
       </Suspense>
     </>
   );

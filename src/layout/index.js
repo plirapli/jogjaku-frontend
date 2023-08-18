@@ -1,5 +1,8 @@
-import MainLayout from "./MainLayout";
-import DestinasiLayout from "./DestinasiLayout";
-import ConstraintLarge from "./ConstraintLarge";
+import { lazy } from 'react';
 
-export { MainLayout, ConstraintLarge, DestinasiLayout }
+const Destinasi = lazy(() => import('./DestinasiLayout'))
+const ConstraintLarge = lazy(() => import('./ConstraintLarge'))
+const Login = lazy(() => import('./LayoutAuth'))
+const Main = lazy(() => import('./LayoutMain'))
+
+export { Login, Main, ConstraintLarge, Destinasi };
