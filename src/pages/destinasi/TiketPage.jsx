@@ -1,6 +1,22 @@
+import { useParams } from 'react-router-dom';
 import { CardBeliTiket } from '../../components/card';
+import { useEffect, useState } from 'react';
+import { getDestinationTicket } from '../../utils/destination';
 
 const TiketPage = () => {
+  const { destinationID } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [tickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    getDestinationTicket(destinationID)
+      .then((ticket) => setTickets(() => [...ticket]))
+      .catch(({ data }) => {
+        console.log(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <div>
       <div className='flex flex-col gap-2 sm:flex-row sm:gap-4 items-center'>
@@ -24,10 +40,9 @@ const TiketPage = () => {
       </div>
       <div className='divider'></div>
       <div className='space-y-3'>
-        <CardBeliTiket />
-        <CardBeliTiket />
-        <CardBeliTiket />
-        <CardBeliTiket />
+        {tickets?.map((ticket) => (
+          <CardBeliTiket ticket={ticket} key={ticket.id} />
+        ))}
       </div>
 
       {/* Form */}

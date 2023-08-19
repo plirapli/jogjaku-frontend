@@ -14,4 +14,10 @@ const getDestinationByID = async (id) =>
     .then((data) => data.data)
     .catch(({ response }) => Promise.reject(response));
 
-export { getAllDestinations, getDestinationByID }
+const getDestinationTicket = async (id) =>
+  api
+    .get(`/destination/${id}`)
+    .then(({ data }) => data.destination.destinationTickets)
+    .catch(({ response }) => Promise.reject(response));
+
+export { getAllDestinations, getDestinationByID, getDestinationTicket }

@@ -1,18 +1,20 @@
 import { Icon } from '@iconify/react';
 
-const CardBeliTiket = () => {
+const CardBeliTiket = ({ ticket }) => {
+  console.log(ticket);
   return (
     <div className='flex border px-4 py-3 rounded-md'>
       <div className='flex-1 flex flex-col items-start gap-3'>
         {/* Header */}
         <div className='w-full flex gap-4 justify-between'>
           <div className='flex gap-2.5 items-center'>
-            <div className='font-medium text-lg'>Candi Borobudur</div>
             <div className='text-xs px-3 rounded-full border-2 border-gray-300'>
-              Domestik
+              {ticket?.touristType}
             </div>
           </div>
-          <div className='text-lg font-medium text-yellow-400'>Rp35.000</div>
+          <div className='text-lg font-medium text-yellow-400'>
+            Rp{ticket?.price}
+          </div>
         </div>
 
         {/* Tengah */}
@@ -20,11 +22,11 @@ const CardBeliTiket = () => {
           <div className='w-full text-gray-500'>
             <div className='flex items-center gap-1.5'>
               <Icon icon='carbon:person' width='20' />
-              <span>Dewasa (di atas 12 tahun)</span>
+              <span className='capitalize'>{ticket?.ageType}</span>
             </div>
             <div className='mt-2 flex items-center gap-1.5'>
               <Icon icon='mdi:clock-outline' width='20' />
-              <span className='text-sm'>Pagi (06.00-14.00)</span>
+              <span className='text-sm'>{ticket?.dateTime}</span>
             </div>
           </div>
 
