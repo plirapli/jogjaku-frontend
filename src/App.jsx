@@ -29,7 +29,7 @@ const App = () => {
             <Route index path='/' element={<MainPage />} />
             <Route path='/destinasi' element={<DestinasiPage />} />
             <Route
-              path='/destinasi/:destinasiID'
+              path='/destinasi/:destinationID'
               element={<Layout.Destinasi />}
             >
               <Route index element={<Destinasi.DeskripsiPage />} />

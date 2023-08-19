@@ -1,10 +1,17 @@
 import { api } from '../config/restApi'
 
-// GET Destination
+// GET All Destinations
 const getAllDestinations = async () =>
   api
     .get('/destinations')
     .then((data) => data.data)
     .catch(({ response }) => Promise.reject(response));
 
-export { getAllDestinations }
+// GET Destination by ID
+const getDestinationByID = async (id) =>
+  api
+    .get(`/destination/${id}`)
+    .then((data) => data.data)
+    .catch(({ response }) => Promise.reject(response));
+
+export { getAllDestinations, getDestinationByID }
