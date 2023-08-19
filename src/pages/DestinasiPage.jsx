@@ -1,7 +1,22 @@
+import { useEffect, useState } from 'react';
 import CardDestinasi from '../components/card/CardDestinasi';
 import ConstraintLarge from '../layout/ConstraintLarge';
+import { getAllDestinations } from '../utils/destination';
+import Loading from '../components/loading/Loading';
 
 const DestinasiPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    getAllDestinations()
+      .then(({ destinations }) => setDestinations(() => [...destinations]))
+      .catch(({ data }) => {
+        console.log(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <div className='pt-24'>
       <ConstraintLarge>
@@ -48,34 +63,20 @@ const DestinasiPage = () => {
           </div>
         </form>
         <div className='divider my-3'></div>
-        {/* {isLoading ? (
+        {isLoading ? (
           <div className='mt-24 flex justify-center items-center'>
-            <LoadingIcon />
+            <Loading />
           </div>
-        ) : filteredWorks.length ? ( */}
-        <div className='mt-4 layout'>
-          {/* {filteredWorks.map((work) => ( */}
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          <CardDestinasi />
-          {/* ))} */}
-        </div>
-        {/* ) : (
-          <div className='mt-4 text-center'>Data tidak ditemukan.</div>
-        )} */}
+        ) : (
+          <div className='mt-4 layout'>
+            {destinations.map((destination) => (
+              <CardDestinasi key={destination?.id} data={destination} />
+            ))}
+          </div>
+        )}
+        {/* : (
+           <div className='mt-4 text-center'>Data tidak ditemukan.</div>
+         )} */}
       </ConstraintLarge>
     </div>
   );
