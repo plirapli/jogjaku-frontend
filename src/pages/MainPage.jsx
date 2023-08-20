@@ -6,14 +6,9 @@ const MainPage = () => {
   window.history.pushState({ urlPath: '/login' }, null, '/');
 
   return (
-    <div className='mt-[5.5rem]'>
-      <Hero />
-      <div className='mt-2.5'>
-        <Destinasi />
-      </div>
-      <div className='mt-2.5'>
-        <Event />
-      </div>
+    <div className='mt-[5.5rem] flex flex-col gap-2.5'>
+      <Destinasi />
+      <Event />
     </div>
   );
 };
