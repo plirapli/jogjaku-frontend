@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  getAccessToken,
   getLocalAccessToken,
   setLocalAccessToken,
 } from '../utils/auth';
@@ -40,7 +39,7 @@ authApi.interceptors.response.use(
 
         try {
           // Get access token from refresh token
-          const { accessToken } = await getAccessToken();
+          const { accessToken } = await getLocalAccessToken();
           setLocalAccessToken(await accessToken);
 
           if (accessToken) {

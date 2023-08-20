@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { useProfile, useTitle } from '../../hooks/title';
 import { sendLogin } from '../../utils/auth';
@@ -33,24 +33,21 @@ const Login = () => {
       .then((data) => {
         const { token } = data;
         // Reset state
-        // setErrMessage('');
+        setErrMessage('');
         setInputData(initialState);
-
-        console.log(token);
 
         // Store token to State && Local Storage
         localStorage.setItem('user', JSON.stringify({ token }));
 
         // Get user data
-        // getUserOwnProfile().then((data) => {
-        navigate('/tes'); // Redirect to home page
-        // setProfile({ ...data });
-        // });
+        getUserOwnProfile()
+          .then((data) => {
+            navigate('/'); // Redirect to home page
+            setProfile({ ...data });
+          })
+          .catch((err) => console.log(err));
       })
-      .catch(({ data }) => {
-        console.log(data);
-        setErrMessage(`Error - ${data.message}`);
-      })
+      .catch(({ data }) => setErrMessage(`Error - ${data.message}`))
       .finally(() => setIsLoading(false));
   };
 
@@ -85,7 +82,7 @@ const Login = () => {
             label='Email'
             type='email'
             value={inputData.email}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan email atau username'
             required
           />
@@ -97,7 +94,7 @@ const Login = () => {
               label='Password'
               type='password'
               value={inputData.password}
-              color='secondary'
+              color='primary'
               placeholder='Masukkan password'
               required
             />

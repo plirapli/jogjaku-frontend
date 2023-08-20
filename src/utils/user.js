@@ -1,6 +1,6 @@
 import { authApi } from '../config/restApi';
 
-const url = '/users';
+const url = '/user';
 
 const getAllUsers = async () =>
   authApi
@@ -17,18 +17,9 @@ const getUserById = async (id) =>
 
 const getUserOwnProfile = async () =>
   authApi
-    .get(`${url}/profile`)
-    .then(({ data }) => data.data)
+    .get(`${url}/`)
+    .then(({ data }) => data)
     .catch(({ response }) => Promise.reject(response));
-
-const getAllGenerations = () => {
-  let angkatanList = [];
-  const yearNow = new Date().getFullYear();
-  for (let i = 2018; i < yearNow; i++) {
-    angkatanList.push(i);
-  }
-  return angkatanList;
-};
 
 const updateUserProfile = async (data) =>
   authApi
@@ -44,19 +35,6 @@ const updatePassword = async (password) =>
     .then(({ data }) => data.message)
     .catch(({ response }) => Promise.reject(response));
 
-const changeUserRole = async (id, id_role) =>
-  authApi
-    .put(`${url}/role/${id}`, { id_role })
-    .then(({ data }) => data.message)
-    .catch(({ response }) => Promise.reject(response));
-
-const changeUserVerify = async (id, verify) => {
-  return authApi
-    .put(`${url}/verify/${id}`, { verify })
-    .then(({ data }) => data.message)
-    .catch(({ response }) => Promise.reject(response));
-};
-
 const deleteUser = (id) => {
   return authApi
     .delete(`${url}/${id}`)
@@ -66,12 +44,9 @@ const deleteUser = (id) => {
 
 export {
   getAllUsers,
-  getAllGenerations,
   getUserById,
   getUserOwnProfile,
   updateUserProfile,
   updatePassword,
-  changeUserRole,
-  changeUserVerify,
   deleteUser,
 };

@@ -1,8 +1,8 @@
-import { api } from '../config/restApi'
+import { authApi } from '../config/restApi'
 
 // POST User Cart
 const addToCart = async (ticket) =>
-  api
+  authApi
     .post('/add-to-cart', ticket)
     .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
