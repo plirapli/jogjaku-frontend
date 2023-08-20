@@ -1,20 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getDestinationByID } from '../../utils/destination';
+import { useOutletContext } from 'react-router-dom';
 
 const DeskripsiPage = () => {
-  const { destinationID } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
-  const [destination, setDestination] = useState({});
-
-  useEffect(() => {
-    getDestinationByID(destinationID)
-      .then(({ destination }) => setDestination(() => ({ ...destination })))
-      .catch(({ data }) => {
-        console.log(data);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
+  const destination = useOutletContext();
 
   return (
     <div>
