@@ -42,8 +42,8 @@ const Login = () => {
         // Get user data
         getUserOwnProfile()
           .then((data) => {
-            navigate('/'); // Redirect to home page
             setProfile({ ...data });
+            navigate('/'); // Redirect to home page
           })
           .catch((err) => console.log(err));
       })

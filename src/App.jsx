@@ -23,16 +23,16 @@ const App = () => {
     // Check if login exist
     if (getLocalAccessToken()) {
       getUserOwnProfile()
-        .then((data) => setProfile({ ...data.user }))
+        .then((data) => setProfile({ ...data?.user }))
         .finally(() => setIsInitializing(false));
     } else {
       setIsInitializing(false);
     }
-  }, []);
+  }, [profile]);
 
-  return (
-    <>
-      <Suspense fallback={<div>Loading...</div>}>
+  if (!isInitializing) {
+    return (
+      <>
         <div className='min-h-screen bg-gray-100'>
           <Routes>
             {!profile?.username ? (
@@ -44,11 +44,10 @@ const App = () => {
                   element={<AuthPage.ForgotPassword />}
                 />
                 <Route path='register/' element={<AuthPage.Register />} />
-                <Route path='tes/' element={<>Dah bisa</>} />
               </Route>
             ) : (
               <Route element={<Layout.Main />}>
-                <Route index path='/' element={<MainPage />} />
+                <Route path='/' element={<MainPage />} />
                 <Route path='/destinasi' element={<DestinasiPage />} />
                 <Route
                   path='/destinasi/:destinationID'
@@ -83,9 +82,11 @@ const App = () => {
             )}
           </Routes>
         </div>
-      </Suspense>
-    </>
-  );
+      </>
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
 };
 
 export default App;
