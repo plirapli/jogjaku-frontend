@@ -1,6 +1,13 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useProfile } from './hooks/title';
+import { getUserOwnProfile } from './utils/user';
+import { getLocalAccessToken } from './utils/auth';
+
 import * as Layout from './layout/';
+import * as AuthPage from './pages/auth';
+import * as Destinasi from './pages/destinasi';
+import ConstraintLarge from './layout/ConstraintLarge';
 import {
   DestinasiPage,
   EventPage,
@@ -8,12 +15,6 @@ import {
   MainPage,
   TiketSayaPage,
 } from './pages';
-import * as AuthPage from './pages/auth';
-import * as Destinasi from './pages/destinasi';
-import { useProfile } from './hooks/title';
-import { getUserOwnProfile } from './utils/user';
-import { getLocalAccessToken } from './utils/auth';
-import ConstraintLarge from './layout/ConstraintLarge';
 
 const App = () => {
   const { profile, setProfile } = useProfile();
@@ -28,7 +29,7 @@ const App = () => {
     } else {
       setIsInitializing(false);
     }
-  }, [profile]);
+  }, []);
 
   if (!isInitializing) {
     return (
