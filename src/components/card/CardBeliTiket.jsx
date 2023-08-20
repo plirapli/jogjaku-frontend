@@ -19,7 +19,9 @@ const CardBeliTiket = ({ name, ticket }) => {
 
   const onClickAddToCartHandle = () => {
     addToCartDestination(selectedTicket)
-      .then((data) => console.log(data))
+      .then(() => {
+        setSelectedTicket((prev) => ({ ...prev, quantity: 0 }));
+      })
       .catch(({ data }) => {
         console.log(data);
       })
