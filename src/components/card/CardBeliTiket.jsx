@@ -1,10 +1,10 @@
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
-import { addToCart } from '../../utils/cart';
+import { addToCartDestination } from '../../utils/cart';
 
 const CardBeliTiket = ({ name, ticket }) => {
   const [selectedTicket, setSelectedTicket] = useState({
-    eventTicketId: ticket?.id,
+    ticketId: ticket?.id,
     quantity: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +18,7 @@ const CardBeliTiket = ({ name, ticket }) => {
   };
 
   const onClickAddToCartHandle = () => {
-    addToCart(selectedTicket)
+    addToCartDestination(selectedTicket)
       .then((data) => console.log(data))
       .catch(({ data }) => {
         console.log(data);

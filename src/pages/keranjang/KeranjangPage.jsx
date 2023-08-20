@@ -1,8 +1,22 @@
 import { ConstraintLarge } from '../../layout';
 import CardTiketKeranjang from '../../components/card/CardTiketKeranjang';
 import TableItemCart from '../../components/table/TableItemCart';
+import { useEffect, useState } from 'react';
+import { getUserCart } from '../../utils/cart';
 
 const KeranjangPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [destinationTicket, setDestinationTicket] = useState([]);
+
+  useEffect(() => {
+    getUserCart()
+      .then((data) => setDestinationTicket([...data.userDestinationTicketCart]))
+      .catch(({ data }) => {
+        console.log(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <div className='pt-20'>
       <ConstraintLarge>
@@ -13,9 +27,12 @@ const KeranjangPage = () => {
         <div className='divider'></div>
         <div className='flex flex-col lg:flex-row lg:items-start gap-3'>
           <div className='w-full space-y-3'>
-            <CardTiketKeranjang />
-            <CardTiketKeranjang />
-            <CardTiketKeranjang />
+            {destinationTicket?.map((ticket) => (
+              <CardTiketKeranjang
+                key={ticket?.destinationTicketId}
+                ticket={ticket}
+              />
+            ))}
           </div>
 
           {/* Rincian harga */}

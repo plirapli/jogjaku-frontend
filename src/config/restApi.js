@@ -39,13 +39,12 @@ authApi.interceptors.response.use(
 
         try {
           // Get access token from refresh token
-          const { accessToken } = await getLocalAccessToken();
-          setLocalAccessToken(await accessToken);
+          const { token } = await getLocalAccessToken();
 
-          if (accessToken) {
+          if (token) {
             config.headers = {
               ...config.headers,
-              Authorization: `Bearer ${await accessToken}`,
+              Authorization: `Bearer ${await token}`,
             };
           }
 

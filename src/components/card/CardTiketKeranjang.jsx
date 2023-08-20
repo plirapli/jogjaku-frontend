@@ -1,29 +1,36 @@
 import { Icon } from '@iconify/react';
+import { formatDateWithDay } from '../../utils/dateConverter';
 
-const CardTiketKeranjang = () => {
+const CardTiketKeranjang = ({ ticket }) => {
+  const date = formatDateWithDay(ticket?.createdAt);
+
   return (
     <div className='flex border px-4 py-3 rounded-md'>
       <div className='flex-1 flex flex-col items-start'>
         <div className='flex gap-2.5 items-center'>
-          <div className='font-medium text-lg'>Candi Borobudur</div>
-          <div className='text-xs px-3 rounded-full border-2 border-gray-300'>
-            Domestik
+          {/* <div className='font-medium text-lg'>{ticket?.}</div> */}
+          <div className='text-xs px-3 rounded-full border-2 border-gray-300 capitalize'>
+            {ticket?.destinationTicket?.touristType}
           </div>
-          <div className='font-bold'>x6</div>
+          <div className='font-bold'>x{ticket?.quantity}</div>
         </div>
         <div className='text-gray-500'>
-          <div className='mt-0.5 flex items-center gap-1.5'>
+          <div className='mt-1 flex items-center gap-1.5'>
             <Icon icon='carbon:person' width='20' />
-            <span>Dewasa (di atas 12 tahun)</span>
+            <span className='capitalize'>
+              {ticket?.destinationTicket?.ageType}
+            </span>
           </div>
-          <div className='mt-0.5 flex items-center gap-3'>
+          <div className='mt-1 flex items-center gap-3'>
             <div className='flex items-center gap-1.5'>
               <Icon icon='material-symbols:date-range' width='20' />
-              <span className='text-sm'>21 Agustus 2023</span>
+              <span className='text-sm'>{date}</span>
             </div>
             <div className='flex items-center gap-1.5'>
               <Icon icon='mdi:clock-outline' width='20' />
-              <span className='text-sm'>Pagi (06.00-14.00)</span>
+              <span className='text-sm'>
+                {ticket?.destinationTicket?.dateTime}
+              </span>
             </div>
           </div>
         </div>
