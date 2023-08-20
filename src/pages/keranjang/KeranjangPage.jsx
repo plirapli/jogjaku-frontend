@@ -44,9 +44,12 @@ const KeranjangPage = () => {
 
             {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
-              <TableItemCart />
-              <TableItemCart />
-              <TableItemCart />
+              {destinationTicket?.map((ticket) => (
+                <TableItemCart
+                  key={ticket?.destinationTicketId}
+                  ticket={ticket}
+                />
+              ))}
               <div className='divider my-1'></div>
 
               {/* Total pembayaran */}

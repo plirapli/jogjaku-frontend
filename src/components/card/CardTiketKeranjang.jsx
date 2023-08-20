@@ -36,7 +36,9 @@ const CardTiketKeranjang = ({ ticket }) => {
         </div>
       </div>
       <div className='flex flex-col justify-between items-end'>
-        <div className='text-lg font-medium text-yellow-400'>Rp35.000</div>
+        <div className='text-lg font-medium text-yellow-400'>
+          Rp{ticket?.totalPrice / ticket?.quantity}
+        </div>
         <div className='text-xs text-gray-400 cursor-pointer transition-all hover:text-red-500'>
           <Icon icon='mdi:trash-outline' width='20' />
         </div>

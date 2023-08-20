@@ -1,32 +1,33 @@
-const TableItemCart = () => {
+import { formatDate } from '../../utils/dateConverter';
+
+const TableItemCart = ({ ticket }) => {
+  const date = formatDate(ticket?.createdAt);
+
   return (
     <>
       <table className='w-full text-sm text-left text-gray-500'>
         <tbody>
           <tr>
-            <th scope='row' colSpan={3} className='py-2.5'>
-              Candi Borobudur (Domestik)
+            <th scope='row' colSpan={2} className='pt-2.5 pb-0.5 capitalize'>
+              ({ticket?.destinationTicket?.touristType})
             </th>
-            <td className='font-medium text-right'>17/08/2023</td>
-          </tr>
-          <tr>
-            <td colSpan={4} className='divider my-2.5'></td>
-          </tr>
-          <tr className='bg-white'>
-            <td className='w-full pr-6 py-1.5 whitespace-nowrap dark:text-white'>
-              Dewasa (di atas 12 tahun), Pagi (06.00-14.00)
+            <td
+              colSpan={2}
+              className='pt-2.5 pb-0.5 font-medium text-right px-6'
+            >
+              {date}
             </td>
-            <td className='px-6 py-1.5'>1</td>
-            <td className='px-2 py-1.5'>Rp</td>
-            <td className='px-6 py-1.5 text-right'>35.000</td>
           </tr>
-          <tr className='bg-white'>
+          <tr className='bg-white capitalize'>
             <td className='w-full pr-6 py-1.5 whitespace-nowrap dark:text-white'>
-              Dewasa (di atas 12 tahun), Pagi (06.00-14.00)
+              {ticket?.destinationTicket?.ageType},{' '}
+              {ticket?.destinationTicket?.dateTime}
             </td>
-            <td className='px-6 py-1.5'>1</td>
+            <td className='px-6 py-1.5'>{ticket?.quantity}</td>
             <td className='px-2 py-1.5'>Rp</td>
-            <td className='px-6 py-1.5 text-right'>35.000</td>
+            <td className='px-6 py-1.5 text-right'>
+              {ticket?.totalPrice / ticket?.quantity}
+            </td>
           </tr>
           <tr>
             <td colSpan={4} className='divider'></td>
@@ -38,7 +39,7 @@ const TableItemCart = () => {
               Sub total
             </td>
             <td className='px-2 pt-3 pb-4'>Rp</td>
-            <td className='px-6 pt-3 pb-4 text-right'>105.000</td>
+            <td className='px-6 pt-3 pb-4 text-right'>{ticket?.totalPrice}</td>
           </tr>
         </tfoot>
       </table>
