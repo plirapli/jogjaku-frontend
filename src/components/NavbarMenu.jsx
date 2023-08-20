@@ -1,6 +1,9 @@
 import { Icon } from '@iconify/react';
 import { Link, NavLink } from 'react-router-dom';
 import { Ava } from '../assets';
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import OverlayNavbar from './overlay/OverlayNavbar';
 
 const NavbarMenu = () => {
   const listItems = [
@@ -22,67 +25,40 @@ const NavbarMenu = () => {
         </Link>
 
         {/* Profil */}
-        <div className='min-w-fit flex items-center md:order-2'>
-          <button
-            type='button'
-            className='flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600'
-            id='user-menu-button'
-            aria-expanded='false'
-            data-dropdown-toggle='user-dropdown'
-            data-dropdown-placement='bottom'
-          >
-            <span className='sr-only'>Open user menu</span>
-            <img className='w-8 h-8 rounded-full' src={Ava} alt='user photo' />
-          </button>
-          <div
-            className='z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600'
-            id='user-dropdown'
-          >
-            <div className='px-4 py-3'>
-              <span className='block text-sm text-gray-900 dark:text-white'>
-                Muhammad Rafli
-              </span>
-              <span className='block text-sm  text-gray-500 truncate dark:text-gray-400'>
-                rafli@itcupnyk.com
-              </span>
-            </div>
-            <ul className='py-2' aria-labelledby='user-menu-button'>
-              <li>
-                <Link
-                  to='/profil'
-                  className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-                >
-                  <Icon icon='iconamoon:profile' width='16' />
-                  Profil
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='keranjang'
-                  className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-                >
-                  <Icon icon='mdi:cart-outline' width='16' />
-                  Keranjang
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='tiket-saya'
-                  className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-                >
-                  <Icon icon='mdi:ticket-outline' width='16' />
-                  Tiket Saya
-                </Link>
-              </li>
-              <div className='h-[1px] w-full px-2 bg-gray-200'></div>
-              <li>
-                <Link className='flex items-center gap-1.5 px-4 py-2 text-sm text-red-500 hover:bg-gray-100'>
-                  <Icon icon='mingcute:exit-line' width='16' />
-                  Keluar
-                </Link>
-              </li>
-            </ul>
+        <Menu
+          as='div'
+          className='min-w-fit relative flex items-center md:order-2'
+        >
+          <div>
+            <Menu.Button className='focus:outline-none '>
+              {/* User info */}
+              <span className='sr-only'>Open user menu</span>
+              <img
+                className='w-8 h-8 rounded-full transition-all hover:border-2 hover:border-black hover:border-opacity-40'
+                src={Ava}
+                alt='user photo'
+              />
+            </Menu.Button>
           </div>
+
+          <Transition
+            as={Fragment}
+            enter='transition ease-out duration-100'
+            enterFrom='transform opacity-0 scale-95'
+            enterTo='transform opacity-100 scale-100'
+            leave='transition ease-in duration-75'
+            leaveFrom='transform opacity-100 scale-100'
+            leaveTo='transform opacity-0 scale-95'
+          >
+            <Menu.Items className='absolute right-0 origin-top-right'>
+              <OverlayNavbar />
+            </Menu.Items>
+          </Transition>
+        </Menu>
+
+        {/* <div className='min-w-fit flex items-center md:order-2'>
+          <OverlayNavbar />
+
           <button
             data-collapse-toggle='navbar-sticky'
             type='button'
@@ -107,7 +83,7 @@ const NavbarMenu = () => {
               />
             </svg>
           </button>
-        </div>
+        </div> */}
 
         {/* Menu tengah */}
         <div
@@ -126,16 +102,6 @@ const NavbarMenu = () => {
     </nav>
   );
 };
-
-<NavLink
-  to='/destinasi/1'
-  end
-  className={({ isActive, isPending }) =>
-    isPending ? '' : isActive ? 'tab tab-active' : 'tab tab-inactive'
-  }
->
-  Deskripsi
-</NavLink>;
 
 const ListItem = ({ href, children, ...props }) => (
   <li>

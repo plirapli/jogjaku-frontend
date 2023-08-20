@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import ConstraintLarge from './ConstraintLarge';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { getDestinationByID } from '../utils/destination';
 
 const DestinasiLayout = () => {
@@ -71,7 +71,9 @@ const DestinasiLayout = () => {
         </div>
       </div>
       <ConstraintLarge>
-        <Outlet context={destination} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet context={destination} />
+        </Suspense>
       </ConstraintLarge>
     </div>
   );
