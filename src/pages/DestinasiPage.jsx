@@ -25,7 +25,7 @@ const DestinasiPage = () => {
             Destinasi Wisata
           </h1>
           <p className='text-black text-opacity-40'>
-            Discover Our Outstanding Portfolio and Expertise
+            Temukan Perjalanan Tak Terlupakan di Destinasi Wisata Kami
           </p>
         </div>
         <form className='mt-4'>

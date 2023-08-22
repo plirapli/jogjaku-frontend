@@ -26,7 +26,7 @@ const Destinasi = () => {
             Destinasi
           </h1>
           <div className='text-sm text-black text-opacity-50'>
-            Lorem ipsum dolor sit amet
+            Temukan Perjalanan Tak Terlupakan di Destinasi Wisata Kami
           </div>
         </div>
         <Link to='/destinasi'>

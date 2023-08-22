@@ -2,9 +2,10 @@ import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { addToCartDestination } from '../../utils/cart';
 
-const CardBeliTiket = ({ name, ticket }) => {
+const CardBeliTiket = ({ name, ticket, date }) => {
   const [selectedTicket, setSelectedTicket] = useState({
     ticketId: ticket?.id,
+    date: date,
     quantity: 0,
   });
   const [isLoading, setIsLoading] = useState(false);

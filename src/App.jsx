@@ -9,10 +9,11 @@ import * as AuthPage from './pages/auth';
 import * as Destinasi from './pages/destinasi';
 import ConstraintLarge from './layout/ConstraintLarge';
 import {
+  MainPage,
   DestinasiPage,
   EventPage,
+  ProfilePage,
   KeranjangPage,
-  MainPage,
   TiketSayaPage,
 } from './pages';
 
@@ -58,7 +59,7 @@ const App = () => {
                   <Route index path='tiket' element={<Destinasi.TiketPage />} />
                 </Route>
                 <Route path='/event' element={<EventPage />} />
-                <Route path='/profil' element={<KeranjangPage />} />
+                <Route path='/profil' element={<ProfilePage />} />
                 <Route path='/keranjang' element={<KeranjangPage />} />
                 <Route path='/tiket-saya' element={<TiketSayaPage />} />
 

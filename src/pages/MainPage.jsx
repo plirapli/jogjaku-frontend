@@ -1,4 +1,3 @@
-import Hero from '../components/Hero';
 import Destinasi from './main/Destinasi';
 import Event from './main/Event';
 

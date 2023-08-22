@@ -10,7 +10,7 @@ const EventPage = () => {
             Event-event
           </h1>
           <p className='text-black text-opacity-40'>
-            Discover Our Outstanding Portfolio and Expertise
+            Temukan Beragam Acara Seru di Event Wisata Kami
           </p>
         </div>
         <form className='mt-4'>

@@ -3,10 +3,20 @@ import CardTiketKeranjang from '../../components/card/CardTiketKeranjang';
 import TableItemCart from '../../components/table/TableItemCart';
 import { useEffect, useState } from 'react';
 import { getUserCart } from '../../utils/cart';
+import { addOrder } from '../../utils/order';
 
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [destinationTicket, setDestinationTicket] = useState([]);
+  const [snap, setSnap] = useState();
+
+  const onClickOrderHandle = () => {
+    addOrder()
+      .then(({ data }) => {
+        window.snap.pay(data?.token);
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     getUserCart()
@@ -23,7 +33,9 @@ const KeranjangPage = () => {
         <h1 className='w-full text-xl font-bold text-primary'>
           Keranjang Saya
         </h1>
-        <p className='text-black text-opacity-40'>Lorem ipsum dolor sit amet</p>
+        <p className='text-black text-opacity-40'>
+          Menampilkan semua item yang telah masuk ke keranjang
+        </p>
         <div className='divider'></div>
         <div className='flex flex-col lg:flex-row lg:items-start gap-3'>
           <div className='w-full space-y-3'>
@@ -83,6 +95,7 @@ const KeranjangPage = () => {
                 </tfoot>
               </table>
               <button
+                onClick={onClickOrderHandle}
                 type='button'
                 className='w-full text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mt-4'
               >

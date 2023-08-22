@@ -61,7 +61,7 @@ const Register = () => {
             onChange={(e) => inputHandler(e, 'fullName')}
             label='Nama'
             value={inputData.fullName}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan nama'
             required
           />
@@ -71,7 +71,7 @@ const Register = () => {
             onChange={(e) => inputHandler(e, 'username')}
             label='Username'
             value={inputData.username}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan username'
             required
           />
@@ -82,7 +82,7 @@ const Register = () => {
             label='Email'
             type='email'
             value={inputData.email}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan alamat email'
             required
           />
@@ -93,7 +93,7 @@ const Register = () => {
             label='Password'
             type='password'
             value={inputData.password}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan password'
             required
           />
@@ -104,7 +104,7 @@ const Register = () => {
             label='Nomor Telepon'
             type='text'
             value={inputData.phoneNumber}
-            color='secondary'
+            color='primary'
             placeholder='Masukkan nomor telepon'
             required
           />

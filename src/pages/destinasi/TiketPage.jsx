@@ -1,8 +1,11 @@
 import { useOutletContext } from 'react-router-dom';
 import { CardBeliTiket } from '../../components/card';
+import { useState } from 'react';
+import { formatDateLongMonth } from '../../utils/dateConverter';
 
 const TiketPage = () => {
   const destination = useOutletContext();
+  const [date, setDate] = useState(new Date());
 
   return (
     <div>
@@ -20,6 +23,8 @@ const TiketPage = () => {
           </label>
           <input
             type='date'
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
             placeholder='Select date'
           />
@@ -30,6 +35,7 @@ const TiketPage = () => {
         {destination?.destinationTickets?.map((ticket) => (
           <CardBeliTiket
             name={destination?.name}
+            date={date}
             ticket={ticket}
             key={ticket.id}
           />
