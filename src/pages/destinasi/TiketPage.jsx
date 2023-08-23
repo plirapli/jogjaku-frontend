@@ -1,11 +1,10 @@
 import { useOutletContext } from 'react-router-dom';
 import { CardBeliTiket } from '../../components/card';
 import { useState } from 'react';
-import { formatDateLongMonth } from '../../utils/dateConverter';
 
 const TiketPage = () => {
   const destination = useOutletContext();
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
 
   return (
     <div>
