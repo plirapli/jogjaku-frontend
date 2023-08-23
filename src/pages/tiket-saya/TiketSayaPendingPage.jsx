@@ -1,7 +1,5 @@
-import React from 'react';
-
 const TiketSayaPage = () => {
-  return <div>TiketSayaPage</div>;
+  return <div>Pending</div>;
 };
 
 export default TiketSayaPage;

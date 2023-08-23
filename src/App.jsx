@@ -14,7 +14,9 @@ import {
   EventPage,
   ProfilePage,
   KeranjangPage,
-  TiketSayaPage,
+  TiketSayaSemuaPage,
+  TiketSayaPendingPage,
+  TiketSayaAktifPage,
 } from './pages';
 
 const App = () => {
@@ -61,7 +63,12 @@ const App = () => {
                 <Route path='/event' element={<EventPage />} />
                 <Route path='/profil' element={<ProfilePage />} />
                 <Route path='/keranjang' element={<KeranjangPage />} />
-                <Route path='/tiket-saya' element={<TiketSayaPage />} />
+
+                <Route path='/tiket-saya' element={<Layout.TiketSaya />}>
+                  <Route index element={<TiketSayaSemuaPage />} />
+                  <Route path='pending' element={<TiketSayaPendingPage />} />
+                  <Route path='aktif' element={<TiketSayaAktifPage />} />
+                </Route>
 
                 {/* Not found page */}
                 <Route
