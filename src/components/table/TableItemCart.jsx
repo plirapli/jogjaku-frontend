@@ -9,7 +9,8 @@ const TableItemCart = ({ ticket }) => {
         <tbody>
           <tr>
             <th scope='row' colSpan={2} className='pt-2.5 pb-0.5 capitalize'>
-              ({ticket?.destinationTicket?.touristType})
+              {ticket?.destinationTicket?.destination?.name} (
+              {ticket?.destinationTicket?.touristType})
             </th>
             <td
               colSpan={2}

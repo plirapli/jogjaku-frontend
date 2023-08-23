@@ -1,14 +1,16 @@
 import { Icon } from '@iconify/react';
 import { formatDateWithDay } from '../../utils/dateConverter';
 
-const CardTiketKeranjang = ({ ticket }) => {
+const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
   const date = formatDateWithDay(ticket?.createdAt);
 
   return (
     <div className='flex border px-4 py-3 rounded-md'>
       <div className='flex-1 flex flex-col items-start'>
         <div className='flex gap-2.5 items-center'>
-          {/* <div className='font-medium text-lg'>{ticket?.}</div> */}
+          <div className='font-medium text-lg'>
+            {ticket?.destinationTicket?.destination?.name}
+          </div>
           <div className='text-xs px-3 rounded-full border-2 border-gray-300 capitalize'>
             {ticket?.destinationTicket?.touristType}
           </div>
@@ -39,9 +41,12 @@ const CardTiketKeranjang = ({ ticket }) => {
         <div className='text-lg font-medium text-yellow-400'>
           Rp{ticket?.totalPrice / ticket?.quantity}
         </div>
-        <div className='text-xs text-gray-400 cursor-pointer transition-all hover:text-red-500'>
+        <button
+          onClick={() => onClickDeleteHandle(ticket?.destinationTicketId)}
+          className='text-xs text-gray-400 cursor-pointer transition-all hover:text-red-500'
+        >
           <Icon icon='mdi:trash-outline' width='20' />
-        </div>
+        </button>
       </div>
     </div>
   );

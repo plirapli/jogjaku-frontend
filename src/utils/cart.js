@@ -7,10 +7,22 @@ const addToCartDestination = async (ticket) =>
     .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
 
+// GET User Cart
 const getUserCart = async () =>
   authApi
     .get('/cart')
     .then(({ data }) => data.data)
     .catch(({ response }) => Promise.reject(response));
 
-export { addToCartDestination, getUserCart }
+// DELETE User Cart
+const deleteCartByID = async (cartId) =>
+  authApi
+    .delete('/delete-cart-item', {
+      data: {
+        cartId
+      }
+    })
+    .then(({ data }) => data.data)
+    .catch(({ response }) => Promise.reject(response));
+
+export { addToCartDestination, getUserCart, deleteCartByID }

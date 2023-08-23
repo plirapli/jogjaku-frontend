@@ -2,18 +2,27 @@ import { ConstraintLarge } from '../../layout';
 import CardTiketKeranjang from '../../components/card/CardTiketKeranjang';
 import TableItemCart from '../../components/table/TableItemCart';
 import { useEffect, useState } from 'react';
-import { getUserCart } from '../../utils/cart';
+import { deleteCartByID, getUserCart } from '../../utils/cart';
 import { addOrder } from '../../utils/order';
 
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [destinationTicket, setDestinationTicket] = useState([]);
-  const [snap, setSnap] = useState();
 
   const onClickOrderHandle = () => {
     addOrder()
       .then(({ data }) => {
         window.snap.pay(data?.token);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const onClickDeleteHandle = (cartID) => {
+    // console.log(cartID);
+    deleteCartByID(cartID)
+      .then((data) => {
+        console.log(data);
+        // setDestinationTicket((tickets) => tickets.filter((ticket) => ticket.i != ))
       })
       .catch((err) => console.error(err));
   };
@@ -43,6 +52,7 @@ const KeranjangPage = () => {
               <CardTiketKeranjang
                 key={ticket?.destinationTicketId}
                 ticket={ticket}
+                onClickDeleteHandle={onClickDeleteHandle}
               />
             ))}
           </div>
