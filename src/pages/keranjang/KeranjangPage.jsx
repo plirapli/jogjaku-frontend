@@ -20,9 +20,10 @@ const KeranjangPage = () => {
   const onClickDeleteHandle = (cartID) => {
     // console.log(cartID);
     deleteCartByID(cartID)
-      .then((data) => {
-        console.log(data);
-        // setDestinationTicket((tickets) => tickets.filter((ticket) => ticket.i != ))
+      .then(() => {
+        setDestinationTicket((tickets) =>
+          tickets.filter((ticket) => ticket.id != cartID)
+        );
       })
       .catch((err) => console.error(err));
   };
@@ -50,7 +51,7 @@ const KeranjangPage = () => {
           <div className='w-full space-y-3'>
             {destinationTicket?.map((ticket) => (
               <CardTiketKeranjang
-                key={ticket?.destinationTicketId}
+                key={ticket?.id}
                 ticket={ticket}
                 onClickDeleteHandle={onClickDeleteHandle}
               />

@@ -22,7 +22,7 @@ const deleteCartByID = async (cartId) =>
         cartId
       }
     })
-    .then(({ data }) => data.data)
+    .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
 
 export { addToCartDestination, getUserCart, deleteCartByID }

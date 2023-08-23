@@ -42,7 +42,7 @@ const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
           Rp{ticket?.totalPrice / ticket?.quantity}
         </div>
         <button
-          onClick={() => onClickDeleteHandle(ticket?.destinationTicketId)}
+          onClick={() => onClickDeleteHandle(ticket?.id)}
           className='text-xs text-gray-400 cursor-pointer transition-all hover:text-red-500'
         >
           <Icon icon='mdi:trash-outline' width='20' />
