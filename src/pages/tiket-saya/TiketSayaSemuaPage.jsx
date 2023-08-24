@@ -14,7 +14,7 @@ const TiketSayaSemuaPage = () => {
   }, []);
 
   return (
-    <div className='space-y-3'>
+    <div className='mt-2 space-y-3'>
       <CardTransaksi />
       <CardTransaksi />
       <CardTransaksi />

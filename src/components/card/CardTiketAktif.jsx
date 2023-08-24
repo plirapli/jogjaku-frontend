@@ -1,14 +1,12 @@
 import { Icon } from '@iconify/react';
-import { formatDateWithDay } from '../../utils/dateConverter';
+import React from 'react';
 
-const CardTransaksiItem = ({ ticket }) => {
-  // const date = formatDateWithDay(ticket?.createdAt);
-
+const CardTiketAktif = () => {
   return (
-    <div className='flex items-center px-4 py-3 border-b'>
+    <div className='flex items-center px-4 py-3 border rounded-md'>
       <div className='flex-1 flex flex-col items-start'>
         <div className='flex gap-2.5 items-center'>
-          <div className='font-medium'>
+          <div className='font-medium text-primary'>
             {/* {ticket?.destinationTicket?.destination?.name} */}
             Candi Prambanan
           </div>
@@ -17,6 +15,9 @@ const CardTransaksiItem = ({ ticket }) => {
             Domestic
           </div>
           <div className='font-bold'>x{/* {ticket?.quantity} */}6</div>
+        </div>
+        <div className='mt-1 font-bold'>
+          953f5e60-3773-4b4c-b506-a3bc25392242
         </div>
         <div className='mt-2.5 flex flex-col items-start sm:flex-row sm:items-center gap-2 text-gray-500'>
           <div className='flex items-center gap-0.5'>
@@ -52,4 +53,4 @@ const CardTransaksiItem = ({ ticket }) => {
   );
 };
 
-export default CardTransaksiItem;
+export default CardTiketAktif;
