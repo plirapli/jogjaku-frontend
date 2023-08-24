@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { getOrderHistory } from '../../utils/order';
+import { CardTransaksi } from '../../components/card/';
 
 const TiketSayaSemuaPage = () => {
   useEffect(() => {
@@ -12,7 +13,13 @@ const TiketSayaSemuaPage = () => {
       });
   }, []);
 
-  return <div>Semua</div>;
+  return (
+    <div className='space-y-3'>
+      <CardTransaksi />
+      <CardTransaksi />
+      <CardTransaksi />
+    </div>
+  );
 };
 
 export default TiketSayaSemuaPage;
