@@ -28,7 +28,7 @@ const DestinasiLayout = () => {
           className='absolute w-full object-cover h-full bg-gray-200'
         />
         <h1 className='w-full text-center p-4 z-10 text-white text-4xl font-bold bg-black bg-opacity-25'>
-          {destination?.name}
+          {destination?.name || 'Tidak ada nama'}
         </h1>
       </div>
 
@@ -38,7 +38,7 @@ const DestinasiLayout = () => {
             <ul className='flex flex-wrap -mb-px'>
               <li className='mr-2'>
                 <NavLink
-                  to='/destinasi/1'
+                  to=''
                   end
                   className={({ isActive, isPending }) =>
                     isPending
@@ -53,7 +53,7 @@ const DestinasiLayout = () => {
               </li>
               <li className='mr-2'>
                 <NavLink
-                  to='/destinasi/1/tiket'
+                  to='tiket'
                   end
                   className={({ isActive, isPending }) =>
                     isPending
