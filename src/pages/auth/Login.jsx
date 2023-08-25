@@ -82,7 +82,7 @@ const Login = () => {
             type='email'
             value={inputData.email}
             color='primary'
-            placeholder='Masukkan email atau username'
+            placeholder='Masukkan email'
             required
           />
         </div>
