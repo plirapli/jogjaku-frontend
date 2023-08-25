@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import { formatDateWithDay } from '../../utils/dateConverter';
 
 const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
-  const date = formatDateWithDay(ticket?.createdAt);
+  const date = formatDateWithDay(ticket?.date);
 
   return (
     <div className='flex border px-4 py-3 rounded-md'>

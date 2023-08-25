@@ -1,14 +1,22 @@
 import { Icon } from '@iconify/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addToCartDestination } from '../../utils/cart';
 import { OverlayLoading } from '../../components/overlay';
 
 const CardBeliTiket = ({ name, ticket, date }) => {
   const [selectedTicket, setSelectedTicket] = useState({
     ticketId: ticket?.id,
-    date: date,
     quantity: 0,
+    date: date,
   });
+
+  useEffect(() => {
+    setSelectedTicket((prev) => ({
+      ...prev,
+      date: date,
+    }));
+  }, [date]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onClickPlusHandle = () =>
@@ -21,6 +29,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
 
   const onClickAddToCartHandle = () => {
     setIsLoading(true);
+
     addToCartDestination(selectedTicket)
       .then(() => {
         setSelectedTicket((prev) => ({ ...prev, quantity: 0 }));
@@ -33,7 +42,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
 
   return (
     <div className='flex border px-4 py-3 rounded-md'>
-      <div className='flex-1 flex flex-col items-start gap-3'>
+      <div className='flex-1 flex flex-col items-start gap-2'>
         {/* Header */}
         <div className='w-full flex gap-4 justify-between'>
           <div className='flex gap-2.5 items-center'>
