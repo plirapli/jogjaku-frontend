@@ -4,6 +4,7 @@ import { Ava } from '../assets';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import OverlayNavbar from './overlay/OverlayNavbar';
+import { Logo } from '../assets';
 
 const NavbarMenu = () => {
   const listItems = [
@@ -17,11 +18,7 @@ const NavbarMenu = () => {
       <div className='max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3 gap-8'>
         {/* Logo */}
         <Link to='/' className='flex items-center'>
-          <img
-            src='/src/assets/logo-primary.svg'
-            className='h-8 mr-3'
-            alt='Flowbite Logo'
-          />
+          <img src={Logo} className='h-8 mr-3' alt='Flowbite Logo' />
         </Link>
 
         {/* Profil */}
