@@ -4,6 +4,7 @@ import TableItemCart from '../../components/table/TableItemCart';
 import { useEffect, useState } from 'react';
 import { deleteCartByID, getUserCart } from '../../utils/cart';
 import { addOrder } from '../../utils/order';
+import Loading from '../../components/loading/Loading';
 
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,13 +66,19 @@ const KeranjangPage = () => {
         <div className='divider'></div>
         <div className='flex flex-col lg:flex-row lg:items-start gap-3'>
           <div className='w-full space-y-3'>
-            {destinationTicket?.map((ticket) => (
-              <CardTiketKeranjang
-                key={ticket?.id}
-                ticket={ticket}
-                onClickDeleteHandle={onClickDeleteHandle}
-              />
-            ))}
+            {isLoading ? (
+              <div className='mt-4 flex justify-center'>
+                <Loading />
+              </div>
+            ) : (
+              destinationTicket?.map((ticket) => (
+                <CardTiketKeranjang
+                  key={ticket?.id}
+                  ticket={ticket}
+                  onClickDeleteHandle={onClickDeleteHandle}
+                />
+              ))
+            )}
           </div>
 
           {/* Rincian harga */}

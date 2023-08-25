@@ -24,7 +24,7 @@ const TableItemCart = ({ ticket }) => {
               {ticket?.destinationTicket?.ageType},{' '}
               {ticket?.destinationTicket?.dateTime}
             </td>
-            <td className='px-6 py-1.5'>{ticket?.quantity}</td>
+            <td className='px-6 py-1.5 lowercase'>x{ticket?.quantity}</td>
             <td className='px-2 py-1.5'>Rp</td>
             <td className='px-6 py-1.5 text-right'>
               {ticket?.totalPrice / ticket?.quantity}
