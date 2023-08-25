@@ -2,6 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import CardTransaksiItem from './CardTransaksiItem';
 import Button from '../buttons/Button';
+import { formatDateLongWithHour } from '../../utils/dateConverter';
 
 const CardTransaksi = ({ payment }) => {
   const onClickPayHandle = (e, payment) => {
@@ -34,7 +35,7 @@ const CardTransaksi = ({ payment }) => {
                       </span>
                     </div>
                     <div className='mt-0.5 text-xs text-black text-opacity-50'>
-                      {payment?.createdAt}
+                      {formatDateLongWithHour(payment?.createdAt)}
                     </div>
                   </div>
                   <div className='text-base'>Rp{payment?.price}</div>

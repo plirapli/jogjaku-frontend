@@ -37,4 +37,15 @@ const formatDateWithHour = (date) => {
   return new Date(date).toLocaleDateString('id-ID', options);
 };
 
-export { formatDate, formatDateWithHour, formatDateLongMonth, formatDateWithDay };
+const formatDateLongWithHour = (date) => {
+  const options = {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+  return new Date(date).toLocaleDateString('en-GB', options);
+};
+
+export { formatDate, formatDateWithHour, formatDateLongMonth, formatDateWithDay, formatDateLongWithHour };
