@@ -43,7 +43,7 @@ const Event = () => {
         ) : (
           <div className='w-full mt-3 flex flex-col gap-4'>
             {events.map((event) => (
-              <CardEvent key={events?.id} event={event} />
+              <CardEvent key={event?.id} event={event} />
             ))}
           </div>
         )}

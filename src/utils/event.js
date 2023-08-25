@@ -11,7 +11,7 @@ const getAllEvents = async () =>
 const getEventByID = async (id) =>
   api
     .get(`/event/${id}`)
-    .then((data) => data.data)
+    .then(({ data }) => data.event)
     .catch(({ response }) => Promise.reject(response));
 
 const getEventTicket = async (id) =>
