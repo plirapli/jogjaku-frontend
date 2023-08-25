@@ -11,7 +11,7 @@ const TiketPage = () => {
       <div className='flex flex-col gap-2 sm:flex-row sm:gap-4 items-center'>
         <div className='w-full'>
           <h2 className='text-lg font-medium'>Beli Tiket</h2>
-          <p className='text-black text-opacity-50'>Candi Borobudur</p>
+          <p className='text-black text-opacity-50'>{destination?.name}</p>
         </div>
         <div className='w-full flex items-center gap-4'>
           <label
