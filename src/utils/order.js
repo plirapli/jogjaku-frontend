@@ -21,4 +21,11 @@ const getOrderPending = async () =>
     .then(({ data }) => data.pendingPayment)
     .catch(({ response }) => Promise.reject(response));
 
-export { addOrder, getOrderHistory, getOrderPending }
+// GET Active Ticket
+const getActiveTicket = async () =>
+  authApi
+    .get('/order-history')
+    .then(({ data }) => data.activeTicket)
+    .catch(({ response }) => Promise.reject(response));
+
+export { addOrder, getOrderHistory, getOrderPending, getActiveTicket }
