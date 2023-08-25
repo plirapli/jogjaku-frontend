@@ -18,7 +18,7 @@ const NavbarMenu = () => {
       <div className='max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3 gap-8'>
         {/* Logo */}
         <Link to='/' className='flex items-center'>
-          <img src={Logo} className='h-8 mr-3' alt='Flowbite Logo' />
+          <img src={Logo} className='h-8 mr-3' alt='Logo' />
         </Link>
 
         {/* Profil */}
