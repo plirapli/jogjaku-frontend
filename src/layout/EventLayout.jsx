@@ -1,18 +1,18 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import ConstraintLarge from './ConstraintLarge';
 import { Suspense, useEffect, useState } from 'react';
-import { getDestinationByID } from '../utils/destination';
+import { getEventByID } from '../utils/event';
 
 const EventLayout = () => {
-  const { destinationID } = useParams();
+  const { eventID } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [destination, setDestination] = useState({});
-  const imageUrl = destination?.imageUrl;
+  const [event, setEvent] = useState({});
+  const imageUrl = event?.imageUrl;
   const imgCover = imageUrl?.split(',')[0];
 
   useEffect(() => {
-    getDestinationByID(destinationID)
-      .then(({ destination }) => setDestination(() => ({ ...destination })))
+    getEventByID(eventID)
+      .then(setEvent)
       .catch(({ data }) => {
         console.log(data);
       })
@@ -28,7 +28,7 @@ const EventLayout = () => {
           className='absolute w-full object-cover h-full bg-gray-200'
         />
         <h1 className='w-full text-center p-4 z-10 text-white text-4xl font-bold bg-black bg-opacity-25'>
-          {destination?.name || 'Title'}
+          {event?.name || 'Title'}
         </h1>
       </div>
 
@@ -72,7 +72,7 @@ const EventLayout = () => {
       </div>
       <ConstraintLarge>
         <Suspense fallback={<div>Loading...</div>}>
-          <Outlet context={destination} />
+          <Outlet context={event} />
         </Suspense>
       </ConstraintLarge>
     </div>

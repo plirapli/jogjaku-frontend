@@ -7,7 +7,7 @@ const CardEvent = ({ event }) => {
   const imgCover = imageUrl.split(',')[0];
 
   return (
-    <Link to={`/event/${1}`}>
+    <Link to={`/event/${event?.id}`}>
       <div className='h-32 flex border rounded-md shadow-sm overflow-hidden cursor-pointer transition-all hover:shadow-md'>
         <div className='w-full flex flex-col px-4 py-3'>
           <div className='w-full text-lg capitalize font-semibold clamp'>

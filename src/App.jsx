@@ -59,11 +59,11 @@ const App = () => {
                   element={<Layout.Destinasi />}
                 >
                   <Route index element={<Destinasi.DeskripsiPage />} />
-                  <Route index path='tiket' element={<Destinasi.TiketPage />} />
+                  <Route path='tiket' element={<Destinasi.TiketPage />} />
                 </Route>
                 <Route path='/event/:eventID' element={<Layout.Event />}>
                   <Route index element={<Event.DeskripsiPage />} />
-                  <Route index path='tiket' element={<Event.TiketPage />} />
+                  <Route path='tiket' element={<Event.TiketPage />} />
                 </Route>
                 <Route path='/event' element={<EventPage />} />
                 <Route path='/profil' element={<ProfilePage />} />
