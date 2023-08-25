@@ -1,15 +1,22 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import CardTransaksiItem from './CardTransaksiItem';
+import Button from '../buttons/Button';
 
 const CardTransaksi = ({ payment }) => {
+  const onClickPayHandle = (e, payment) => {
+    e.stopPropagation();
+    console.log(payment);
+    window.snap.pay(payment?.snapToken);
+  };
+
   return (
     <div>
       <Disclosure>
         {({ open }) => (
           <>
             <div className='rounded-lg overflow-hidden'>
-              <Disclosure.Button className='w-full bg-gray-100 px-4 py-3 shadow text-left text-sm font-medium text-yellow-950 transition-all hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75'>
+              <Disclosure.Button className='flex flex-col w-full bg-gray-100 px-4 py-3 shadow text-left text-sm font-medium text-yellow-950 transition-all hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-opacity-75'>
                 <div className='flex w-full items-center gap-1.5'>
                   <div className='w-full'>
                     <div className='flex items-center gap-2'>
@@ -37,6 +44,13 @@ const CardTransaksi = ({ payment }) => {
                     } h-5 w-5 text-yellow-950`}
                   />
                 </div>
+                {payment?.status != 'settlement' && (
+                  <div className='mt-3'>
+                    <Button onClick={(e) => onClickPayHandle(e, payment)}>
+                      Bayar Sekarang
+                    </Button>
+                  </div>
+                )}
               </Disclosure.Button>
               <Disclosure.Panel className='bg-gray-50 text-sm text-gray-500'>
                 {payment?.orders.map((order) => (

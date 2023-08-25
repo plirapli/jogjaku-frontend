@@ -7,11 +7,18 @@ const addOrder = async () =>
     .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
 
-// GET Order History
+// GET All Order History
 const getOrderHistory = async () =>
   authApi
     .get('/order-history')
     .then(({ data }) => data.historyPayment)
     .catch(({ response }) => Promise.reject(response));
 
-export { addOrder, getOrderHistory }
+// GET Order Pending
+const getOrderPending = async () =>
+  authApi
+    .get('/order-history')
+    .then(({ data }) => data.pendingPayment)
+    .catch(({ response }) => Promise.reject(response));
+
+export { addOrder, getOrderHistory, getOrderPending }
