@@ -91,7 +91,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
         {/* Tombol beli/keranjang */}
         <button
           onClick={onClickAddToCartHandle}
-          disabled={selectedTicket?.quantity <= 0 ? 'true' : 'false'}
+          disabled={selectedTicket?.quantity <= 0}
           className={`flex items-center flex-row-reverse sm:flex-row gap-2 sm:self-end 
             sm:rounded-full w-full sm:max-w-fit 
             transition-all
@@ -99,7 +99,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
             font-medium rounded-lg 
             text-sm px-5 py-2.5 text-center ${
               selectedTicket?.quantity
-                ? 'bg-yellow-300 hover:bg-yellow-400 text-yellow-950'
+                ? 'bg-yellow-300 hover:bg-yellow-400 text-yellow-950 cursor-pointer'
                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'
             }`}
         >
