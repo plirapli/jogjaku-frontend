@@ -2,7 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import CardTransaksiItem from './CardTransaksiItem';
 
-const CardTransaksi = () => {
+const CardTransaksi = ({ payment }) => {
   return (
     <div>
       <Disclosure>
@@ -13,18 +13,24 @@ const CardTransaksi = () => {
                 <div className='flex w-full items-center gap-1.5'>
                   <div className='w-full'>
                     <div className='flex items-center gap-2'>
-                      <div className='text-base font-bold'>
-                        953f5e60-3773-4b4c-b506-a3bc25392242
-                      </div>
-                      <span className='text-xs px-2.5 py-0.5 font-bold text-green-600 bg-green-300 rounded-full'>
-                        Selesai
+                      <div className='text-base font-bold'>{payment?.id}</div>
+                      <span
+                        className={`text-xs px-2.5 py-0.5 font-bold rounded-full ${
+                          payment?.status === 'settlement'
+                            ? 'text-green-600 bg-green-300'
+                            : 'text-yellow-600 bg-yellow-200'
+                        }`}
+                      >
+                        {payment?.status === 'settlement'
+                          ? 'Selesai'
+                          : 'Pending'}
                       </span>
                     </div>
                     <div className='mt-0.5 text-xs text-black text-opacity-50'>
-                      12 Aug 2023, 08:00
+                      {payment?.createdAt}
                     </div>
                   </div>
-                  <div className='text-base'>Rp35000</div>
+                  <div className='text-base'>Rp{payment?.price}</div>
                   <ChevronDownIcon
                     className={`${
                       open ? 'rotate-180 transform' : ''
@@ -33,8 +39,9 @@ const CardTransaksi = () => {
                 </div>
               </Disclosure.Button>
               <Disclosure.Panel className='bg-gray-50 text-sm text-gray-500'>
-                <CardTransaksiItem />
-                <CardTransaksiItem />
+                {payment?.orders.map((order) => (
+                  <CardTransaksiItem key={order?.id} order={order} />
+                ))}
               </Disclosure.Panel>
             </div>
           </>

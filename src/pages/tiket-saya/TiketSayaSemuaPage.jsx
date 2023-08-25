@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getOrderHistory } from '../../utils/order';
 import { CardTransaksi } from '../../components/card/';
 
 const TiketSayaSemuaPage = () => {
+  const [allPayment, setAllPayment] = useState([]);
+
   useEffect(() => {
     getOrderHistory()
-      .then((data) => {
-        console.log(data);
-      })
+      .then(setAllPayment)
       .catch((err) => {
         console.error(err);
       });
@@ -15,9 +15,9 @@ const TiketSayaSemuaPage = () => {
 
   return (
     <div className='mt-2 space-y-3'>
-      <CardTransaksi />
-      <CardTransaksi />
-      <CardTransaksi />
+      {allPayment.map((payment) => (
+        <CardTransaksi key={payment?.id} payment={payment} />
+      ))}
     </div>
   );
 };
