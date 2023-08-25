@@ -2,6 +2,7 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import ConstraintLarge from './ConstraintLarge';
 import { Suspense, useEffect, useState } from 'react';
 import { getDestinationByID } from '../utils/destination';
+import { OverlayLoading } from '../components/overlay';
 
 const DestinasiLayout = () => {
   const { destinationID } = useParams();
@@ -75,6 +76,7 @@ const DestinasiLayout = () => {
           <Outlet context={destination} />
         </Suspense>
       </ConstraintLarge>
+      <OverlayLoading loadingState={isLoading} />
     </div>
   );
 };
