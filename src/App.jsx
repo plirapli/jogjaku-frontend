@@ -7,6 +7,7 @@ import { getLocalAccessToken } from './utils/auth';
 import * as Layout from './layout/';
 import * as AuthPage from './pages/auth';
 import * as Destinasi from './pages/destinasi';
+import * as Event from './pages/event';
 import ConstraintLarge from './layout/ConstraintLarge';
 import {
   MainPage,
@@ -59,6 +60,10 @@ const App = () => {
                 >
                   <Route index element={<Destinasi.DeskripsiPage />} />
                   <Route index path='tiket' element={<Destinasi.TiketPage />} />
+                </Route>
+                <Route path='/event/:eventID' element={<Layout.Event />}>
+                  <Route index element={<Event.DeskripsiPage />} />
+                  <Route index path='tiket' element={<Event.TiketPage />} />
                 </Route>
                 <Route path='/event' element={<EventPage />} />
                 <Route path='/profil' element={<ProfilePage />} />

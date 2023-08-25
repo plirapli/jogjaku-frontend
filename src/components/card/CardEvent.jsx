@@ -6,7 +6,7 @@ const CardEvent = ({ work }) => {
   const imgCover = work?.img_cover || defaultCover;
 
   return (
-    <Link>
+    <Link to={`/event/${1}`}>
       <div className='h-32 flex border rounded-md shadow-sm overflow-hidden cursor-pointer transition-all hover:shadow-md'>
         <div className='w-full flex flex-col px-4 py-3'>
           <div className='w-full text-lg capitalize font-semibold clamp'>
