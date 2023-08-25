@@ -88,12 +88,12 @@ const CardBeliTiket = ({ name, ticket, date }) => {
 
         {/* Tombol beli/keranjang */}
         <div className='w-full flex items-center gap-3'>
-          <button className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'>
+          <button className='text-gray-900 bg-white border border-gray-300 transition-all focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'>
             Beli Langsung
           </button>
           <button
             onClick={onClickAddToCartHandle}
-            className='text-yellow-950 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'
+            className='text-yellow-950 bg-yellow-300 transition-all hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'
           >
             Tambah ke Keranjang
           </button>
