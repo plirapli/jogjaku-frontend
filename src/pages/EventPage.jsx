@@ -1,7 +1,22 @@
+import { useEffect, useState } from 'react';
 import { CardEvent } from '../components/card/';
 import ConstraintLarge from '../layout/ConstraintLarge';
+import Loading from '../components/loading/Loading';
+import { getAllEvents } from '../utils/event';
 
 const EventPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    getAllEvents()
+      .then(setEvents)
+      .catch(({ data }) => {
+        console.log(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <div className='pt-24'>
       <ConstraintLarge>
@@ -48,23 +63,17 @@ const EventPage = () => {
           </div>
         </form>
         <div className='divider my-3'></div>
-        {/* {isLoading ? (
+        {isLoading ? (
           <div className='mt-24 flex justify-center items-center'>
-            <LoadingIcon />
+            <Loading />
           </div>
-        ) : filteredWorks.length ? ( */}
-        <div className='mt-4 flex flex-col gap-4'>
-          {/* {filteredWorks.map((work) => ( */}
-          <CardEvent />
-          <CardEvent />
-          <CardEvent />
-          <CardEvent />
-          <CardEvent />
-          {/* ))} */}
-        </div>
-        {/* ) : (
-          <div className='mt-4 text-center'>Data tidak ditemukan.</div>
-        )} */}
+        ) : (
+          <div className='mt-4 flex flex-col gap-4'>
+            {events.map((event) => (
+              <CardEvent key={event?.id} event={event} />
+            ))}
+          </div>
+        )}
       </ConstraintLarge>
     </div>
   );

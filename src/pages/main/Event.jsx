@@ -1,8 +1,23 @@
 import { Link } from 'react-router-dom';
 import ConstraintLarge from '../../layout/ConstraintLarge';
 import { CardEvent } from '../../components/card';
+import { useEffect, useState } from 'react';
+import { getAllEvents } from '../../utils/event';
+import Loading from '../../components/loading/Loading';
 
 const Event = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    getAllEvents()
+      .then(setEvents)
+      .catch(({ data }) => {
+        console.log(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <ConstraintLarge>
       <div className='flex items-center justify-between'>
@@ -21,12 +36,20 @@ const Event = () => {
         </Link>
       </div>
       <div className='w-full mt-3'>
-        <div className='w-full mt-3 flex flex-col gap-4'>
-          <CardEvent />
-          <CardEvent />
-          <CardEvent />
-          <CardEvent />
-        </div>
+        {isLoading ? (
+          <div className='mt-24 flex justify-center items-center'>
+            <Loading />
+          </div>
+        ) : (
+          <div className='w-full mt-3 flex flex-col gap-4'>
+            {events.map((event) => (
+              <CardEvent key={events?.id} event={event} />
+            ))}
+          </div>
+        )}
+        {/* : (
+           <div className='mt-4 text-center'>Data tidak ditemukan.</div>
+         )} */}
       </div>
     </ConstraintLarge>
   );
