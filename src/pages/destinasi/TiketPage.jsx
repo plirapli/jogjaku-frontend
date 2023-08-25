@@ -8,7 +8,7 @@ const TiketPage = () => {
 
   return (
     <div>
-      {destination?.destinationTickets.length ? (
+      {destination?.destinationTickets?.length ? (
         <div className='flex flex-col gap-2 sm:flex-row sm:gap-4 items-center'>
           <div className='w-full'>
             <h2 className='text-lg font-medium'>Beli Tiket</h2>
