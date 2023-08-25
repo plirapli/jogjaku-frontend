@@ -50,6 +50,7 @@ authApi.interceptors.response.use(
 
           return authApi(config);
         } catch ({ response }) {
+          window.location.replace('/login');
           return Promise.reject(response);
         }
       }
