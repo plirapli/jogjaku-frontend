@@ -8,6 +8,22 @@ import { addOrder } from '../../utils/order';
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [destinationTicket, setDestinationTicket] = useState([]);
+  const [totalPayment, setTotalPayment] = useState(0);
+
+  const totalPaymentHandle = () => {
+    if (destinationTicket.length) {
+      setTotalPayment(() =>
+        destinationTicket.reduce((acc, cur) => acc + cur.totalPrice, 0)
+      );
+    } else {
+      setTotalPayment(() => 0);
+    }
+  };
+
+  useEffect(() => {
+    totalPaymentHandle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [destinationTicket.length]);
 
   const onClickOrderHandle = () => {
     addOrder()
@@ -67,31 +83,23 @@ const KeranjangPage = () => {
 
             {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
-              {destinationTicket?.map((ticket) => (
-                <TableItemCart
-                  key={ticket?.destinationTicketId}
-                  ticket={ticket}
-                />
-              ))}
+              {destinationTicket.length ? (
+                destinationTicket?.map((ticket) => (
+                  <TableItemCart
+                    key={ticket?.destinationTicketId}
+                    ticket={ticket}
+                  />
+                ))
+              ) : (
+                <div className='pt-1 pb-2 px-4 text-center'>
+                  Kamu belum memasukkan item ke keranjang.
+                </div>
+              )}
               <div className='divider my-1'></div>
 
               {/* Total pembayaran */}
               <table className='w-full text-sm text-left text-gray-500'>
                 <tfoot>
-                  <tr className='font-semibold dark:text-white'>
-                    <td colSpan={3} className='pr-6 py-1 text-base'>
-                      Sub total pembayaran
-                    </td>
-                    <td className='px-2 py-1'>Rp</td>
-                    <td className='px-6 py-1 text-right'>105.000</td>
-                  </tr>
-                  <tr className='font-semibold dark:text-white'>
-                    <td colSpan={3} className='pr-6 py-1 text-base'>
-                      Biaya admin (10%)
-                    </td>
-                    <td className='px-2 py-1'>Rp</td>
-                    <td className='px-6 py-1 text-right'>10.500</td>
-                  </tr>
                   <tr className='font-semibold text-gray-900 dark:text-white'>
                     <th
                       scope='row'
@@ -101,7 +109,7 @@ const KeranjangPage = () => {
                       Total Pembayaran
                     </th>
                     <td className='px-2 py-1'>Rp</td>
-                    <td className='px-6 py-1 text-right'>115.500</td>
+                    <td className='px-6 py-1 text-right'>{totalPayment}</td>
                   </tr>
                 </tfoot>
               </table>
