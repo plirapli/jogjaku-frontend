@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useProfile } from '../../hooks/title';
+import { logoutHandler } from '../../utils/auth';
 
 const OverlayNavbar = () => {
   const { profile, setProfile } = useProfile();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const toProfile = () => navigate(`/u/${profile?.username}/profile`);
   // const toDaftarMateri = () => navigate('manage/course/');
   // const toDaftarPengguna = () => navigate('/manage/user/');
-  // const toLogout = () => {
-  //   logoutHandler();
-  //   setProfile({});
-  //   navigate('/');
-  // };
+  const toLogout = () => {
+    logoutHandler();
+    setProfile({});
+    navigate('/');
+  };
 
   return (
     <>
@@ -58,10 +59,13 @@ const OverlayNavbar = () => {
           </li>
           <div className='h-[1px] w-full px-2 bg-gray-200'></div>
           <li>
-            <Link className='flex items-center gap-1.5 px-4 py-2 text-sm text-red-500 hover:bg-gray-100'>
+            <div
+              onClick={toLogout}
+              className='flex items-center gap-1.5 px-4 py-2 cursor-pointer text-sm text-red-500 hover:bg-gray-100'
+            >
               <Icon icon='mingcute:exit-line' width='16' />
               Keluar
-            </Link>
+            </div>
           </li>
         </ul>
       </div>

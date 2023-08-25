@@ -11,7 +11,6 @@ import { getUserOwnProfile } from '../../utils/user';
 
 const Login = () => {
   window.history.pushState({}, null, '/login');
-  const navigate = useNavigate();
   useTitle('Masuk');
 
   const initialState = { email: '', password: '' };
@@ -43,7 +42,7 @@ const Login = () => {
         getUserOwnProfile()
           .then((data) => {
             setProfile({ ...data });
-            navigate('/'); // Redirect to home page
+            window.location.replace('/');
           })
           .catch((err) => console.log(err));
       })

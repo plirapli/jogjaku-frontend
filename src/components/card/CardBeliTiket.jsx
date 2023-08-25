@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { addToCartDestination } from '../../utils/cart';
+import { OverlayLoading } from '../../components/overlay';
 
 const CardBeliTiket = ({ name, ticket, date }) => {
   const [selectedTicket, setSelectedTicket] = useState({
@@ -19,6 +20,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
   };
 
   const onClickAddToCartHandle = () => {
+    setIsLoading(true);
     addToCartDestination(selectedTicket)
       .then(() => {
         setSelectedTicket((prev) => ({ ...prev, quantity: 0 }));
@@ -46,7 +48,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
         </div>
 
         {/* Tengah */}
-        <div className='w-full flex flex-col items-start sm:flex-row sm:items-end gap-4'>
+        <div className='w-full flex items-center gap-4'>
           <div className='w-full text-gray-500'>
             <div className='flex items-center gap-1.5'>
               <Icon icon='carbon:person' width='20' />
@@ -87,18 +89,27 @@ const CardBeliTiket = ({ name, ticket, date }) => {
         </div>
 
         {/* Tombol beli/keranjang */}
-        <div className='w-full flex items-center gap-3'>
-          <button className='text-gray-900 bg-white border border-gray-300 transition-all focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'>
-            Beli Langsung
-          </button>
-          <button
-            onClick={onClickAddToCartHandle}
-            className='text-yellow-950 bg-yellow-300 transition-all hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center'
-          >
+        <button
+          onClick={onClickAddToCartHandle}
+          disabled={selectedTicket?.quantity <= 0 ? 'true' : 'false'}
+          className={`flex items-center flex-row-reverse sm:flex-row gap-2 sm:self-end 
+            sm:rounded-full w-full sm:max-w-fit 
+            transition-all
+            focus:ring-4 focus:outline-none focus:ring-white 
+            font-medium rounded-lg 
+            text-sm px-5 py-2.5 text-center ${
+              selectedTicket?.quantity
+                ? 'bg-yellow-300 hover:bg-yellow-400 text-yellow-950'
+                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+            }`}
+        >
+          <Icon icon='mdi:cart-outline' width='18' />
+          <span className='w-full text-left sm:text-center'>
             Tambah ke Keranjang
-          </button>
-        </div>
+          </span>
+        </button>
       </div>
+      <OverlayLoading loadingState={isLoading} />
     </div>
   );
 };

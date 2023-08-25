@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useProfile } from './hooks/title';
-import { getUserOwnProfile } from './utils/user';
 import { getLocalAccessToken } from './utils/auth';
+import { getUserOwnProfile } from './utils/user';
+import { useProfile } from './hooks/title';
 
 import * as Layout from './layout/';
 import * as AuthPage from './pages/auth';
@@ -37,7 +37,7 @@ const App = () => {
 
   if (!isInitializing) {
     return (
-      <>
+      <Suspense fallback={<div>Loading...</div>}>
         <div className='min-h-screen bg-gray-100'>
           <Routes>
             {!profile?.username ? (
@@ -96,7 +96,7 @@ const App = () => {
             )}
           </Routes>
         </div>
-      </>
+      </Suspense>
     );
   } else {
     return <div>Loading...</div>;
