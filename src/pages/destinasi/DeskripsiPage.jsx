@@ -6,7 +6,7 @@ const DeskripsiPage = () => {
   return (
     <div>
       <div>
-        <h2 className='text-lg font-medium'>Deskripsi Umum</h2>
+        <h2 className='text-sm font-bold'>Deskripsi Umum</h2>
         <div className='mt-1.5 flex flex-col gap-2'>
           <p>{destination?.description}</p>
         </div>

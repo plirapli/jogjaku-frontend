@@ -46,7 +46,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
         {/* Header */}
         <div className='w-full flex gap-4 justify-between'>
           <div className='flex gap-2.5 items-center'>
-            <div className='text-lg font-medium'>{name}</div>
+            <div className='font-medium'>{name}</div>
             <div className='text-xs px-3 rounded-full border-2 border-gray-300'>
               {ticket?.touristType}
             </div>
@@ -61,7 +61,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
           <div className='w-full text-gray-500'>
             <div className='flex items-center gap-1.5'>
               <Icon icon='carbon:person' width='20' />
-              <span className='capitalize'>{ticket?.ageType}</span>
+              <span className='text-sm capitalize'>{ticket?.ageType}</span>
             </div>
             <div className='mt-2 flex items-center gap-1.5'>
               <Icon icon='mdi:clock-outline' width='20' />
