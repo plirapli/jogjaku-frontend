@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { deleteCartByID, getUserCart } from '../../utils/cart';
 import { addOrder } from '../../utils/order';
 import Loading from '../../components/loading/Loading';
+import Button from '../../components/buttons/Button';
+import { Link } from 'react-router-dom';
 
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,10 +59,10 @@ const KeranjangPage = () => {
   return (
     <div className='pt-20'>
       <ConstraintLarge>
-        <h1 className='w-full text-xl font-bold text-primary'>
+        <h1 className='w-full text-lg font-bold text-primary'>
           Keranjang Saya
         </h1>
-        <p className='text-black text-opacity-40'>
+        <p className='text-black text-opacity-40 text-sm'>
           Menampilkan semua item yang telah masuk ke keranjang
         </p>
         <div className='divider'></div>
@@ -69,6 +71,13 @@ const KeranjangPage = () => {
             {isLoading ? (
               <div className='mt-4 flex justify-center'>
                 <Loading />
+              </div>
+            ) : !destinationTicket?.length ? (
+              <div className='py-8 px-4 flex flex-col gap-4'>
+                <div className='text-center'>Keranjang masih kosong.</div>
+                <Link to='/destinasi'>
+                  <Button>Jelajahi Destinasi Wisata</Button>
+                </Link>
               </div>
             ) : (
               destinationTicket?.map((ticket) => (
@@ -90,7 +99,7 @@ const KeranjangPage = () => {
 
             {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
-              {destinationTicket.length ? (
+              {destinationTicket?.length ? (
                 destinationTicket?.map((ticket) => (
                   <TableItemCart
                     key={ticket?.destinationTicketId}
@@ -123,7 +132,16 @@ const KeranjangPage = () => {
               <button
                 onClick={onClickOrderHandle}
                 type='button'
-                className='w-full text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mt-4'
+                disabled={!destinationTicket?.length}
+                className={`
+                  w-full px-5 py-2.5 mt-4
+                  focus:outline-none focus:ring-4 
+                  text-center font-medium rounded-md text-sm 
+                  ${
+                    destinationTicket?.length
+                      ? 'text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300'
+                      : 'text-black text-opacity-30 bg-gray-100'
+                  }`}
               >
                 Lanjutkan Pembayaran
               </button>
