@@ -52,7 +52,7 @@ const EventLayout = () => {
                   Informasi Event
                 </NavLink>
               </li>
-              <li className='mr-2'>
+              {/* <li className='mr-2'>
                 <NavLink
                   to='tiket'
                   end
@@ -66,7 +66,7 @@ const EventLayout = () => {
                 >
                   Beli Tiket
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
