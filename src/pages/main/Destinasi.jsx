@@ -20,7 +20,7 @@ const Destinasi = () => {
 
   return (
     <ConstraintLarge>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between gap-2'>
         <div>
           <h1 className='w-full text-2xl font-bold text-left text-primary'>
             Destinasi
@@ -30,7 +30,7 @@ const Destinasi = () => {
           </div>
         </div>
         <Link to='/destinasi'>
-          <div className='underline w-max text-black text-opacity-40'>
+          <div className='text-sm underline w-max text-black text-opacity-40'>
             Lihat semua
           </div>
         </Link>
