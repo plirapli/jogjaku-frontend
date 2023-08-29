@@ -48,4 +48,6 @@ const formatDateLongWithHour = (date) => {
   return new Date(date).toLocaleDateString('en-GB', options);
 };
 
-export { formatDate, formatDateWithHour, formatDateLongMonth, formatDateWithDay, formatDateLongWithHour };
+const sortDateObject = (arr) => arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
+export { formatDate, formatDateWithHour, formatDateLongMonth, formatDateWithDay, formatDateLongWithHour, sortDateObject };
