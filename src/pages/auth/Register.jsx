@@ -49,7 +49,8 @@ const Register = () => {
 
   return (
     <>
-      <h1 className='mt-4 text-xl sm:text-2xl'>Daftar</h1>
+      <div className='mt-6 divider'></div>
+      <h1 className='mt-4 text-xl'>Daftar</h1>
       {errMessage && (
         <div className='mt-0.5 mb-1.5 text-danger-main capitalize w-max max-w-full'>
           {errMessage}
@@ -110,17 +111,16 @@ const Register = () => {
           />
         </div>
 
-        <section className='mt-4 w-full'>
+        <section className='mt-2 w-full'>
           <Button>Daftar</Button>
         </section>
       </form>
-      <div className='mt-2.5 text-center'>
-        <p className='text-gray-dark'>
-          Sudah mempunyai akun?
-          <span className='ml-1 text-primary underline'>
-            <Link to='/login'>Masuk</Link>
-          </span>
-        </p>
+      <div className='my-4 divider'></div>
+      <div className='mt-2.5 flex flex-col gap-2 text-center'>
+        <div className='text-gray-dark'>Sudah mempunyai akun?</div>
+        <Link to='/login'>
+          <Button color='secondary'>Masuk</Button>
+        </Link>
       </div>
 
       <OverlayLoading loadingState={isLoading} />

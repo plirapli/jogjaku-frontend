@@ -57,7 +57,8 @@ const Login = () => {
 
   return (
     <>
-      <h1 className='mt-4 text-xl sm:text-2xl'>Masuk</h1>
+      <div className='mt-6 divider'></div>
+      <h1 className='mt-4 text-xl'>Masuk</h1>
       {errMessage &&
         (errMessage.includes('Error') ? (
           !errMessage.includes('not verified') && (
@@ -100,17 +101,16 @@ const Login = () => {
           </div>
         </section>
 
-        <section className='mt-4 w-full'>
+        <section className='mt-2 w-full'>
           <Button>Masuk</Button>
         </section>
       </form>
-      <div className='mt-2.5 text-center'>
-        <p className='text-gray-dark'>
-          Belum mempunyai akun?
-          <span className='ml-1 text-primary underline'>
-            <Link to='/register'>Daftar</Link>
-          </span>
-        </p>
+      <div className='my-4 divider'></div>
+      <div className='mt-2.5 flex flex-col gap-2 text-center'>
+        <div className='text-gray-dark'>Belum mempunyai akun?</div>
+        <Link to='/register'>
+          <Button color='secondary'>Daftar</Button>
+        </Link>
       </div>
       <OverlayLoading loadingState={isLoading} />
     </>
