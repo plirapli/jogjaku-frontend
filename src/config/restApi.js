@@ -27,32 +27,9 @@ authApi.interceptors.request.use(
 authApi.interceptors.response.use(
   (res) => res,
   async (err) => {
-    const config = err?.config;
-
-    if (config.url !== '/login' && err.response) {
-      // Access Token was expired
-      if (err.response.status === 400 && !config._retry) {
-        config._retry = true;
-
-        try {
-          // Get access token
-          const { token } = await getLocalAccessToken();
-
-          if (token) {
-            config.headers = {
-              ...config.headers,
-              Authorization: `Bearer ${await token}`,
-            };
-          }
-
-          return authApi(config);
-        } catch ({ response }) {
-          window.location.replace('./login')
-          return Promise.reject(response);
-        }
-      }
+    if (err.response.status === 400) {
+      window.location.replace('/')
     }
-
     return Promise.reject(err);
   }
 );
