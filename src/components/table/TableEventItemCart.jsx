@@ -1,6 +1,6 @@
 import { formatDate } from '../../utils/dateConverter';
 
-const TableItemCart = ({ ticket }) => {
+const TableEventItemCart = ({ ticket }) => {
   const date = formatDate(ticket?.date);
 
   return (
@@ -8,25 +8,18 @@ const TableItemCart = ({ ticket }) => {
       <table className='w-full text-sm text-left text-gray-500'>
         <tbody>
           <tr>
-            <th scope='row' colSpan={2} className='pt-1.5 pb-0.5 capitalize'>
+            <th scope='row' colSpan={4} className='pt-1 pb-0.5 capitalize'>
               <span className='text-primary mr-1.5'>
-                {ticket?.destinationTicket?.destination?.name}
+                {ticket?.eventTicket?.event?.name}
               </span>
               <span className='font-normal'>
-                ({ticket?.destinationTicket?.touristType})
+                ({ticket?.eventTicket?.seatType || 'Umum'})
               </span>
             </th>
-            <td
-              colSpan={2}
-              className='pt-2.5 pb-0.5 font-medium text-right px-6'
-            >
-              {date}
-            </td>
           </tr>
           <tr className='bg-white capitalize'>
             <td className='w-full pr-6 py-1.5 whitespace-nowrap dark:text-white'>
-              {ticket?.destinationTicket?.ageType},{' '}
-              {ticket?.destinationTicket?.dateTime}
+              {date}, {ticket?.eventTicket?.dateTime}
             </td>
             <td className='px-6 py-1.5 lowercase'>x{ticket?.quantity}</td>
             <td className='px-2 py-1.5'>Rp</td>
@@ -52,4 +45,4 @@ const TableItemCart = ({ ticket }) => {
   );
 };
 
-export default TableItemCart;
+export default TableEventItemCart;

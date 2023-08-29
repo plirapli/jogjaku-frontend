@@ -3,11 +3,11 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import CardTransaksiItem from './CardTransaksiItem';
 import Button from '../buttons/Button';
 import { formatDateLongWithHour } from '../../utils/dateConverter';
+import CardEventTransaksiItem from './CardEventTransaksiItem';
 
 const CardTransaksi = ({ payment }) => {
   const onClickPayHandle = (e, payment) => {
     e.stopPropagation();
-    console.log(payment);
     window.snap.pay(payment?.snapToken);
   };
 
@@ -23,15 +23,19 @@ const CardTransaksi = ({ payment }) => {
                     <div className='flex items-center gap-2'>
                       <div className='text-base font-bold'>{payment?.id}</div>
                       <span
-                        className={`text-xs px-2.5 py-0.5 font-bold rounded-full ${
+                        className={`text-xs px-2.5 py-0.5 rounded-full ${
                           payment?.status === 'settlement'
                             ? 'text-green-600 bg-green-300'
-                            : 'text-yellow-600 bg-yellow-200'
+                            : payment?.status === 'pending'
+                            ? 'text-yellow-500 bg-yellow-200'
+                            : 'text-gray-dark bg-gray-300'
                         }`}
                       >
                         {payment?.status === 'settlement'
                           ? 'Selesai'
-                          : 'Pending'}
+                          : payment?.status === 'pending'
+                          ? 'Pending'
+                          : 'Expired'}
                       </span>
                     </div>
                     <div className='mt-0.5 text-xs text-black text-opacity-50'>
@@ -45,8 +49,8 @@ const CardTransaksi = ({ payment }) => {
                     } h-5 w-5 text-yellow-950`}
                   />
                 </div>
-                {payment?.status != 'settlement' && (
-                  <div className='mt-3'>
+                {payment?.status === 'pending' && (
+                  <div className='sm:w-fit w-full mt-3'>
                     <Button onClick={(e) => onClickPayHandle(e, payment)}>
                       Bayar Sekarang
                     </Button>
@@ -54,9 +58,13 @@ const CardTransaksi = ({ payment }) => {
                 )}
               </Disclosure.Button>
               <Disclosure.Panel className='bg-gray-50 text-sm text-gray-500'>
-                {payment?.orders.map((order) => (
-                  <CardTransaksiItem key={order?.id} order={order} />
-                ))}
+                {payment?.orders?.map((order) => {
+                  return order?.destinationTicketId ? (
+                    <CardTransaksiItem key={order?.id} order={order} />
+                  ) : (
+                    <CardEventTransaksiItem key={order?.id} order={order} />
+                  );
+                })}
               </Disclosure.Panel>
             </div>
           </>

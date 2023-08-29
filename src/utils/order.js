@@ -1,4 +1,5 @@
 import { authApi } from "../config/restApi";
+import { sortDateObject } from "./dateConverter";
 
 // POST Order
 const addOrder = async () =>
@@ -11,14 +12,14 @@ const addOrder = async () =>
 const getOrderHistory = async () =>
   authApi
     .get('/order-history')
-    .then(({ data }) => data.historyPayment)
+    .then(({ data }) => sortDateObject(data.historyPayment))
     .catch(({ response }) => Promise.reject(response));
 
 // GET Order Pending
 const getOrderPending = async () =>
   authApi
     .get('/order-history')
-    .then(({ data }) => data.pendingPayment)
+    .then(({ data }) => sortDateObject(data.pendingPayment))
     .catch(({ response }) => Promise.reject(response));
 
 // GET Active Ticket

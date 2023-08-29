@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import { formatDateWithDay } from '../../utils/dateConverter';
 
-const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
+const CardEventTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
   const date = formatDateWithDay(ticket?.date);
 
   return (
@@ -9,18 +9,15 @@ const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
       <div className='flex-1 flex flex-col items-start'>
         <div className='flex gap-2.5 items-center'>
           <div className='font-medium text-lg text-primary'>
-            {ticket?.destinationTicket?.destination?.name}
-          </div>
-          <div className='text-xs px-3 rounded-full border-2 border-gray-300 capitalize'>
-            {ticket?.destinationTicket?.touristType}
+            {ticket?.eventTicket?.event?.name}
           </div>
           <div className='font-bold'>x{ticket?.quantity}</div>
         </div>
-        <div className='text-gray-500'>
-          <div className='mt-1 flex items-center gap-1.5'>
-            <Icon icon='carbon:person' width='18' />
+        <div className='mt-1.5 text-gray-500'>
+          <div className='flex items-center gap-1.5'>
+            <Icon icon='material-symbols:chair-outline' width='18' />
             <span className='capitalize text-sm'>
-              {ticket?.destinationTicket?.ageType}
+              {ticket?.eventTicket?.seatType || 'Umum'}
             </span>
           </div>
           <div className='mt-1 flex items-center gap-3'>
@@ -30,16 +27,14 @@ const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
             </div>
             <div className='flex items-center gap-1.5'>
               <Icon icon='mdi:clock-outline' width='18' />
-              <span className='text-sm'>
-                {ticket?.destinationTicket?.dateTime}
-              </span>
+              <span className='text-sm'>{ticket?.eventTicket?.dateTime}</span>
             </div>
           </div>
         </div>
       </div>
       <div className='flex flex-col justify-between items-end'>
         <div className='font-medium text-primary'>
-          Rp{ticket?.destinationTicket?.price}
+          Rp{ticket?.eventTicket?.price}
         </div>
         <button
           onClick={() => onClickDeleteHandle(ticket?.id)}
@@ -52,4 +47,4 @@ const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
   );
 };
 
-export default CardTiketKeranjang;
+export default CardEventTiketKeranjang;
