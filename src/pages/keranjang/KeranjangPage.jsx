@@ -149,19 +149,19 @@ const KeranjangPage = () => {
 
           {/* Rincian harga */}
           <div className='w-full border px-4 py-3 rounded-md'>
-            <h2 className='leading-tight font-medium mb-2'>Rincian Harga</h2>
+            <h2 className='leading-tight mb-2 text-gray-dark'>Rincian Harga</h2>
             <div className='divider my-1'></div>
 
             {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
-              {destinationTicket?.length &&
+              {destinationTicket?.length > 0 &&
                 destinationTicket?.map((ticket) => (
                   <TableItemCart
                     key={ticket?.destinationTicketId}
                     ticket={ticket}
                   />
                 ))}
-              {eventTicket?.length &&
+              {eventTicket?.length > 0 &&
                 eventTicket?.map((ticket) => (
                   <TableEventItemCart
                     key={ticket?.eventTicketId}
@@ -169,7 +169,7 @@ const KeranjangPage = () => {
                   />
                 ))}
 
-              {(!eventTicket?.length || !destinationTicket?.length) && (
+              {eventTicket?.length <= 0 && destinationTicket?.length <= 0 && (
                 <div className='pt-1 pb-2 px-4 text-center text-gray-dark'>
                   Kamu belum memasukkan item ke keranjang.
                 </div>
@@ -196,13 +196,15 @@ const KeranjangPage = () => {
               <button
                 onClick={onClickOrderHandle}
                 type='button'
-                disabled={!destinationTicket?.length}
+                disabled={
+                  destinationTicket?.length <= 0 || eventTicket?.length <= 0
+                }
                 className={`
                   w-full px-5 py-2.5 mt-4
                   focus:outline-none focus:ring-4 
                   text-center font-medium rounded-md text-sm 
                   ${
-                    destinationTicket?.length
+                    destinationTicket?.length > 0 || eventTicket?.length > 0
                       ? 'text-white bg-primary hover:bg-yellow-500 focus:ring-yellow-300'
                       : 'text-black text-opacity-30 bg-gray-100'
                   }`}

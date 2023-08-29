@@ -1,10 +1,8 @@
 import { useOutletContext } from 'react-router-dom';
 import { CardEventBeliTiket } from '../../components/card';
-import { useState } from 'react';
 
 const TiketPage = () => {
   const event = useOutletContext();
-  console.log(event);
 
   return (
     <div>

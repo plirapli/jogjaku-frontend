@@ -1,16 +1,20 @@
 import { formatDate } from '../../utils/dateConverter';
 
 const TableItemCart = ({ ticket }) => {
-  const date = formatDate(ticket?.createdAt);
+  const date = formatDate(ticket?.date);
 
   return (
     <>
       <table className='w-full text-sm text-left text-gray-500'>
         <tbody>
           <tr>
-            <th scope='row' colSpan={2} className='pt-2.5 pb-0.5 capitalize'>
-              {ticket?.destinationTicket?.destination?.name} (
-              {ticket?.destinationTicket?.touristType})
+            <th scope='row' colSpan={2} className='pt-1.5 pb-0.5 capitalize'>
+              <span className='text-primary mr-1.5'>
+                {ticket?.destinationTicket?.destination?.name}
+              </span>
+              <span className='font-normal'>
+                ({ticket?.destinationTicket?.touristType})
+              </span>
             </th>
             <td
               colSpan={2}
@@ -35,7 +39,7 @@ const TableItemCart = ({ ticket }) => {
           </tr>
         </tbody>
         <tfoot>
-          <tr className='font-semibold dark:text-white'>
+          <tr className='font-medium dark:text-white'>
             <td colSpan={2} className='pr-6 pt-3 pb-4'>
               Sub total
             </td>
