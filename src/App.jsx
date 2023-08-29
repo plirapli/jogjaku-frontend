@@ -19,6 +19,7 @@ import {
   TiketSayaPendingPage,
   TiketSayaAktifPage,
 } from './pages';
+import Loading from './components/loading/Loading';
 
 const App = () => {
   const { profile, setProfile } = useProfile();
@@ -35,72 +36,74 @@ const App = () => {
     }
   }, []);
 
-  if (!isInitializing) {
-    return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className='min-h-screen bg-gray-100'>
-          <Routes>
-            {!profile?.username ? (
-              // Kalo belum login, masuk ke auth page
-              <Route element={<Layout.Login />}>
-                <Route path='/*' element={<AuthPage.Login />} />
-                <Route
-                  path='forgot-password/'
-                  element={<AuthPage.ForgotPassword />}
-                />
-                <Route path='register/' element={<AuthPage.Register />} />
-              </Route>
-            ) : (
-              <Route element={<Layout.Main />}>
-                <Route path='/' element={<MainPage />} />
-                <Route path='/destinasi' element={<DestinasiPage />} />
-                <Route
-                  path='/destinasi/:destinationID'
-                  element={<Layout.Destinasi />}
-                >
-                  <Route index element={<Destinasi.DeskripsiPage />} />
-                  <Route path='tiket' element={<Destinasi.TiketPage />} />
-                </Route>
-                <Route path='/event/:eventID' element={<Layout.Event />}>
-                  <Route index element={<Event.DeskripsiPage />} />
-                  <Route path='tiket' element={<Event.TiketPage />} />
-                </Route>
-                <Route path='/event' element={<EventPage />} />
-                <Route path='/profil' element={<ProfilePage />} />
-                <Route path='/keranjang' element={<KeranjangPage />} />
-
-                <Route path='/tiket-saya' element={<Layout.TiketSaya />}>
-                  <Route index element={<TiketSayaSemuaPage />} />
-                  <Route path='pending' element={<TiketSayaPendingPage />} />
-                  <Route path='aktif' element={<TiketSayaAktifPage />} />
-                </Route>
-
-                {/* Not found page */}
-                <Route
-                  path='not-found'
-                  element={
-                    <ConstraintLarge>
-                      <div className='mt-20'>Halamaan tidak ditemukan.</div>
-                    </ConstraintLarge>
-                  }
-                />
-                <Route
-                  path='*'
-                  element={
-                    <ConstraintLarge>
-                      <div className='mt-20'>Halamaan tidak ditemukan.</div>
-                    </ConstraintLarge>
-                  }
-                />
-              </Route>
-            )}
-          </Routes>
+  return (
+    <Suspense
+      fallback={
+        <div className='flex items-center justify-center min-h-screen'>
+          <Loading />
         </div>
-      </Suspense>
-    );
-  } else {
-    return <div>Loading...</div>;
-  }
+      }
+    >
+      <div className='min-h-screen bg-gray-100'>
+        <Routes>
+          {!profile?.username ? (
+            // Kalo belum login, masuk ke auth page
+            <Route element={<Layout.Login />}>
+              <Route path='/*' element={<AuthPage.Login />} />
+              <Route
+                path='forgot-password/'
+                element={<AuthPage.ForgotPassword />}
+              />
+              <Route path='register/' element={<AuthPage.Register />} />
+            </Route>
+          ) : (
+            <Route element={<Layout.Main />}>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/destinasi' element={<DestinasiPage />} />
+              <Route
+                path='/destinasi/:destinationID'
+                element={<Layout.Destinasi />}
+              >
+                <Route index element={<Destinasi.DeskripsiPage />} />
+                <Route path='tiket' element={<Destinasi.TiketPage />} />
+              </Route>
+              <Route path='/event/:eventID' element={<Layout.Event />}>
+                <Route index element={<Event.DeskripsiPage />} />
+                <Route path='tiket' element={<Event.TiketPage />} />
+              </Route>
+              <Route path='/event' element={<EventPage />} />
+              <Route path='/profil' element={<ProfilePage />} />
+              <Route path='/keranjang' element={<KeranjangPage />} />
+
+              <Route path='/tiket-saya' element={<Layout.TiketSaya />}>
+                <Route index element={<TiketSayaSemuaPage />} />
+                <Route path='pending' element={<TiketSayaPendingPage />} />
+                <Route path='aktif' element={<TiketSayaAktifPage />} />
+              </Route>
+
+              {/* Not found page */}
+              <Route
+                path='not-found'
+                element={
+                  <ConstraintLarge>
+                    <div className='mt-20'>Halamaan tidak ditemukan.</div>
+                  </ConstraintLarge>
+                }
+              />
+              <Route
+                path='*'
+                element={
+                  <ConstraintLarge>
+                    <div className='mt-20'>Halamaan tidak ditemukan.</div>
+                  </ConstraintLarge>
+                }
+              />
+            </Route>
+          )}
+        </Routes>
+      </div>
+    </Suspense>
+  );
 };
 
 export default App;
