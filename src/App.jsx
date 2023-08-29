@@ -23,17 +23,11 @@ import Loading from './components/loading/Loading';
 
 const App = () => {
   const { profile, setProfile } = useProfile();
-  const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
     // Check if login exist
-    if (getLocalAccessToken()) {
-      getUserOwnProfile()
-        .then((data) => setProfile({ ...data?.user }))
-        .finally(() => setIsInitializing(false));
-    } else {
-      setIsInitializing(false);
-    }
+    if (getLocalAccessToken())
+      getUserOwnProfile().then((data) => setProfile({ ...data?.user }));
   }, []);
 
   return (
