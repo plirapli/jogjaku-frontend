@@ -1,9 +1,16 @@
 import { authApi } from '../config/restApi'
 
-// POST User Cart
+// POST User Destination Cart
 const addToCartDestination = async (ticket) =>
   authApi
     .post('/add-to-cart?type=destination', ticket)
+    .then((data) => data)
+    .catch(({ response }) => Promise.reject(response));
+
+// POST User Event Cart
+const addToCartEvent = async (ticket) =>
+  authApi
+    .post('/add-to-cart?type=event', ticket)
     .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
 
@@ -25,4 +32,4 @@ const deleteCartByID = async (cartId) =>
     .then((data) => data)
     .catch(({ response }) => Promise.reject(response));
 
-export { addToCartDestination, getUserCart, deleteCartByID }
+export { addToCartDestination, addToCartEvent, getUserCart, deleteCartByID }

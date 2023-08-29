@@ -4,5 +4,6 @@ import CardBeliTiket from "./CardBeliTiket";
 import CardTransaksi from "./CardTransaksi";
 import CardTransaksiItem from "./CardTransaksiItem";
 import CardTiketAktif from "./CardTiketAktif";
+import CardEventBeliTiket from "./CardEventBeliTiket";
 
-export { CardDestinasi, CardEvent, CardBeliTiket, CardTransaksi, CardTransaksiItem, CardTiketAktif }
+export { CardDestinasi, CardEvent, CardBeliTiket, CardEventBeliTiket, CardTransaksi, CardTransaksiItem, CardTiketAktif }
