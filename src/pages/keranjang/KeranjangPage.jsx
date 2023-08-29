@@ -7,17 +7,25 @@ import { addOrder } from '../../utils/order';
 import Loading from '../../components/loading/Loading';
 import Button from '../../components/buttons/Button';
 import { Link } from 'react-router-dom';
+import CardEventTiketKeranjang from '../../components/card/CardEventTiketKeranjang';
+import TableEventItemCart from '../../components/table/TableEventItemCart';
 
 const KeranjangPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [destinationTicket, setDestinationTicket] = useState([]);
+  const [eventTicket, setEventTicket] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
 
   const totalPaymentHandle = () => {
-    if (destinationTicket.length) {
-      setTotalPayment(() =>
-        destinationTicket.reduce((acc, cur) => acc + cur.totalPrice, 0)
-      );
+    if (destinationTicket.length || eventTicket.length) {
+      setTotalPayment(() => {
+        const destination = destinationTicket.reduce(
+          (acc, cur) => acc + cur.totalPrice,
+          0
+        );
+        const event = eventTicket.reduce((acc, cur) => acc + cur.totalPrice, 0);
+        return destination + event;
+      });
     } else {
       setTotalPayment(() => 0);
     }
@@ -26,7 +34,7 @@ const KeranjangPage = () => {
   useEffect(() => {
     totalPaymentHandle();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [destinationTicket.length]);
+  }, [destinationTicket.length, eventTicket.length]);
 
   const onClickOrderHandle = () => {
     addOrder()
@@ -37,7 +45,6 @@ const KeranjangPage = () => {
   };
 
   const onClickDeleteHandle = (cartID) => {
-    // console.log(cartID);
     deleteCartByID(cartID)
       .then(() => {
         setDestinationTicket((tickets) =>
@@ -47,9 +54,22 @@ const KeranjangPage = () => {
       .catch((err) => console.error(err));
   };
 
+  const onClickDeleteEventHandle = (cartID) => {
+    deleteCartByID(cartID)
+      .then(() =>
+        setEventTicket((tickets) =>
+          tickets.filter((ticket) => ticket.id != cartID)
+        )
+      )
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     getUserCart()
-      .then((data) => setDestinationTicket([...data.userDestinationTicketCart]))
+      .then((data) => {
+        setDestinationTicket([...data.userDestinationTicketCart]);
+        setEventTicket([...data.userEventTicketCart]);
+      })
       .catch(({ data }) => {
         console.log(data);
       })
@@ -67,50 +87,94 @@ const KeranjangPage = () => {
         </p>
         <div className='divider'></div>
         <div className='flex flex-col lg:flex-row lg:items-start gap-3'>
-          <div className='w-full space-y-3'>
-            {isLoading ? (
-              <div className='mt-4 flex justify-center'>
-                <Loading />
+          <div className='w-full'>
+            {/* Destinasi */}
+            <div className='w-full space-y-3'>
+              <div className='text-sm font-bold -mb-1.5'>
+                Keranjang Destinasi
               </div>
-            ) : !destinationTicket?.length ? (
-              <div className='py-8 px-4 flex flex-col gap-4'>
-                <div className='text-center'>Keranjang masih kosong.</div>
-                <Link to='/destinasi'>
-                  <Button>Jelajahi Destinasi Wisata</Button>
-                </Link>
-              </div>
-            ) : (
-              destinationTicket?.map((ticket) => (
-                <CardTiketKeranjang
-                  key={ticket?.id}
-                  ticket={ticket}
-                  onClickDeleteHandle={onClickDeleteHandle}
-                />
-              ))
-            )}
+              {isLoading ? (
+                <div className='mt-4 flex justify-center'>
+                  <Loading />
+                </div>
+              ) : !destinationTicket?.length ? (
+                <div className='py-4 flex flex-col gap-4'>
+                  <div className='mb-4 text-center text-gray-dark'>
+                    Keranjang destinasi masih kosong.
+                  </div>
+                  <Link to='/destinasi'>
+                    <Button>Jelajahi Destinasi Wisata</Button>
+                  </Link>
+                </div>
+              ) : (
+                destinationTicket?.map((ticket) => (
+                  <CardTiketKeranjang
+                    key={ticket?.id}
+                    ticket={ticket}
+                    onClickDeleteHandle={onClickDeleteHandle}
+                  />
+                ))
+              )}
+            </div>
+
+            <div className='divider'></div>
+
+            {/* Event */}
+            <div className='w-full space-y-3'>
+              <div className='text-sm font-bold -mb-1.5'>Keranjang Event</div>
+              {isLoading ? (
+                <div className='mt-4 flex justify-center'>
+                  <Loading />
+                </div>
+              ) : !eventTicket?.length ? (
+                <div className='py-4 flex flex-col gap-4'>
+                  <div className='mb-4 text-center text-gray-dark'>
+                    Keranjang event masih kosong.
+                  </div>
+                  <Link to='/event'>
+                    <Button>Jelajahi Event</Button>
+                  </Link>
+                </div>
+              ) : (
+                eventTicket?.map((ticket) => (
+                  <CardEventTiketKeranjang
+                    key={ticket?.id}
+                    ticket={ticket}
+                    onClickDeleteHandle={onClickDeleteEventHandle}
+                  />
+                ))
+              )}
+            </div>
           </div>
 
           {/* Rincian harga */}
           <div className='w-full border px-4 py-3 rounded-md'>
-            <h2 className='text-lg leading-tight font-medium mb-2'>
-              Rincian Harga
-            </h2>
+            <h2 className='leading-tight font-medium mb-2'>Rincian Harga</h2>
             <div className='divider my-1'></div>
 
             {/* Tabel rincian harga */}
             <div className='relative overflow-x-auto'>
-              {destinationTicket?.length ? (
+              {destinationTicket?.length &&
                 destinationTicket?.map((ticket) => (
                   <TableItemCart
                     key={ticket?.destinationTicketId}
                     ticket={ticket}
                   />
-                ))
-              ) : (
-                <div className='pt-1 pb-2 px-4 text-center'>
+                ))}
+              {eventTicket?.length &&
+                eventTicket?.map((ticket) => (
+                  <TableEventItemCart
+                    key={ticket?.eventTicketId}
+                    ticket={ticket}
+                  />
+                ))}
+
+              {(!eventTicket?.length || !destinationTicket?.length) && (
+                <div className='pt-1 pb-2 px-4 text-center text-gray-dark'>
                   Kamu belum memasukkan item ke keranjang.
                 </div>
               )}
+
               <div className='divider my-1'></div>
 
               {/* Total pembayaran */}
