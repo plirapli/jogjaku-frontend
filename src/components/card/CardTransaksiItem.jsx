@@ -44,7 +44,7 @@ const CardTransaksiItem = ({ order }) => {
           </div>
         </div>
       </div>
-      <div className='text-sm sm:text-base font-medium text-yellow-400'>
+      <div className='text-sm sm:text-base font-medium text-primary'>
         Rp{order?.destinationTicket?.price}
       </div>
     </div>

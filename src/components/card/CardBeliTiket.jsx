@@ -51,7 +51,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
               {ticket?.touristType}
             </div>
           </div>
-          <div className='text-lg font-medium text-yellow-400'>
+          <div className='text-lg font-medium text-primary'>
             Rp{ticket?.price}
           </div>
         </div>
@@ -108,7 +108,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
             font-medium rounded-lg 
             text-sm px-5 py-2.5 text-center ${
               selectedTicket?.quantity
-                ? 'bg-yellow-300 hover:bg-yellow-400 text-yellow-950 cursor-pointer'
+                ? 'bg-yellow-300 hover:bg-primary text-yellow-950 cursor-pointer'
                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'
             }`}
         >

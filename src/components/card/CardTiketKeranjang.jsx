@@ -38,7 +38,7 @@ const CardTiketKeranjang = ({ ticket, onClickDeleteHandle }) => {
         </div>
       </div>
       <div className='flex flex-col justify-between items-end'>
-        <div className='text-lg font-medium text-yellow-400'>
+        <div className='text-lg font-medium text-primary'>
           Rp{ticket?.destinationTicket?.price}
         </div>
         <button

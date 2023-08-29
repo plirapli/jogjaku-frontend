@@ -16,13 +16,19 @@ const sendLogin = async (userData) =>
   api
     .post('/login', userData)
     .then(({ data }) => data)
-    .catch(({ response }) => Promise.reject(response));
+    .catch(({ response }) => {
+      if (response.status === 400)
+        return Promise.reject({ ...response, message: 'Username atau Password yang anda masukkan salah' })
+    });
 
 const sendRegister = async (userData) =>
   api
     .post('/register', userData)
     .then(({ data }) => data.message)
-    .catch(({ response }) => Promise.reject(response));
+    .catch(({ response }) => {
+      if (response.status === 400)
+        return Promise.reject({ ...response, message: response.data.message })
+    });
 
 const logoutHandler = () => localStorage.removeItem('user');
 

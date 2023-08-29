@@ -93,11 +93,11 @@
   }
 
   .nav-active {
-    @apply text-yellow-400;
+    @apply text-primary;
   }
 
   .nav-inactive {
-    @apply text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-400;
+    @apply text-gray-900  hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary;
   }
 
   .divider {
@@ -142,7 +142,7 @@
   }
 
   .tab-active {
-    @apply text-yellow-400 border-yellow-400;
+    @apply text-primary border-primary;
   }
 
   .tab-inactive {

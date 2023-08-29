@@ -4,8 +4,8 @@ import { Logo } from '../assets';
 import Loading from '../components/loading/Loading';
 
 const LayoutLogin = () => {
-  const [errorMsg, setErrorMsg] = useState('');
-  const errorMsgHandler = (errMsg) => setErrorMsg(errMsg);
+  const [error, setError] = useState({ status: '', msg: '' });
+  const errorHandle = (err) => setError(err);
 
   return (
     <div className='min-h-screen sm:p-6 flex sm:justify-center sm:items-center'>
@@ -21,7 +21,7 @@ const LayoutLogin = () => {
             </div>
           }
         >
-          <Outlet context={[errorMsg, errorMsgHandler]} />
+          <Outlet context={[error, errorHandle]} />
         </Suspense>
       </div>
     </div>

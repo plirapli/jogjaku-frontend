@@ -139,7 +139,7 @@ const KeranjangPage = () => {
                   text-center font-medium rounded-md text-sm 
                   ${
                     destinationTicket?.length
-                      ? 'text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300'
+                      ? 'text-white bg-primary hover:bg-yellow-500 focus:ring-yellow-300'
                       : 'text-black text-opacity-30 bg-gray-100'
                   }`}
               >
