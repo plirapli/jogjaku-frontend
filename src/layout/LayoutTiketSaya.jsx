@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ConstraintLarge } from '.';
+import Loading from '../components/loading/Loading';
 
 const LayoutTiketSaya = () => {
   return (
@@ -59,7 +60,13 @@ const LayoutTiketSaya = () => {
         </div>
       </div>
       <ConstraintLarge>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className='flex items-center justify-center'>
+              <Loading />
+            </div>
+          }
+        >
           <Outlet />
         </Suspense>
       </ConstraintLarge>
