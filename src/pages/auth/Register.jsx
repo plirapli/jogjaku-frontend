@@ -20,7 +20,7 @@ const Register = () => {
     password: '',
     id_division: 1,
   };
-  const [errMessage, setErrMessage] = useOutletContext();
+  const [error, setError] = useOutletContext();
   const [inputData, setInputData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,26 +34,35 @@ const Register = () => {
 
     setIsLoading(true);
     sendRegister(data)
-      .then((data) => {
+      .then(() => {
         setInputData(initialState); // Reset state
-        setErrMessage(data); // Set message
+        // Set message
+        setError({
+          status: 200,
+          msg: 'Berhasil membuat akun, silakan masuk',
+        });
         navigate('/login'); // Navigate to /login
       })
-      .catch(({ data }) => setErrMessage(`Error - ${data.message}`))
+      .catch((err) =>
+        setError({
+          status: err.status,
+          msg: err.message,
+        })
+      )
       .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
-    setErrMessage('');
+    setError({ status: '', mesg: '' });
   }, []);
 
   return (
     <>
       <div className='mt-6 divider'></div>
       <h1 className='mt-4 text-xl'>Daftar</h1>
-      {errMessage && (
-        <div className='mt-0.5 mb-1.5 text-danger-main capitalize w-max max-w-full'>
-          {errMessage}
+      {error.status && (
+        <div className='mt-2 mb-3 text-danger-main capitalize w-max max-w-full'>
+          {error.msg}
         </div>
       )}
       <form onSubmit={submitHandler} className='mt-1.5 flex flex-col gap-3'>

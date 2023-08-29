@@ -44,10 +44,6 @@ const App = () => {
             // Kalo belum login, masuk ke auth page
             <Route element={<Layout.Login />}>
               <Route path='/*' element={<AuthPage.Login />} />
-              <Route
-                path='forgot-password/'
-                element={<AuthPage.ForgotPassword />}
-              />
               <Route path='register/' element={<AuthPage.Register />} />
             </Route>
           ) : (

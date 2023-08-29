@@ -15,7 +15,7 @@ const Login = () => {
 
   const initialState = { email: '', password: '' };
   const { setProfile } = useProfile();
-  const [errMessage, setErrMessage] = useOutletContext();
+  const [error, setError] = useOutletContext();
   const [inputData, setInputData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const Login = () => {
       .then((data) => {
         const { token } = data;
         // Reset state
-        setErrMessage('');
+        // setError({});
         setInputData(initialState);
 
         // Store token to State && Local Storage
@@ -46,29 +46,31 @@ const Login = () => {
           })
           .catch((err) => console.log(err));
       })
-      .catch(({ data }) => setErrMessage(`Error - ${data.message}`))
+      .catch((err) =>
+        setError({
+          status: err.status,
+          msg: err.message,
+        })
+      )
       .finally(() => setIsLoading(false));
   };
 
-  // Remove err msg on first render
   useEffect(() => {
-    if (errMessage.includes('Error')) setErrMessage('');
+    if (error.status == 400) setError({ status: '', mesg: '' });
   }, []);
 
   return (
     <>
       <div className='mt-6 divider'></div>
       <h1 className='mt-4 text-xl'>Masuk</h1>
-      {errMessage &&
-        (errMessage.includes('Error') ? (
-          !errMessage.includes('not verified') && (
-            <div className='mt-0.5 mb-1.5 text-danger-main capitalize w-max max-w-full'>
-              {errMessage}
-            </div>
-          )
+      {error.status &&
+        (error.status === 400 ? (
+          <div className='mt-2 mb-3 text-danger-main capitalize w-max max-w-full'>
+            {error.msg}
+          </div>
         ) : (
           <div className='mt-2 mb-4 py-2 px-4 bg-green-100 text-green-600 rounded-md w-max max-w-full'>
-            {errMessage}
+            {error.msg}
           </div>
         ))}
       <form
