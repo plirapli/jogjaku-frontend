@@ -63,10 +63,10 @@
 
   /* Button color */
   .btn.primary {
-    @apply bg-primary text-white shadow-sm hover:bg-opacity-80;
+    @apply bg-primary text-white shadow-sm hover:bg-primaryHover;
   }
   .btn.secondary {
-    @apply bg-secondary text-primary shadow-sm hover:bg-secondaryHover;
+    @apply bg-gray-light text-gray-dark shadow-sm hover:bg-grayHover;
   }
   .btn.gray {
     @apply bg-black bg-opacity-10 text-black text-opacity-70 hover:bg-opacity-20;
@@ -81,7 +81,7 @@
 
   /* Input Component */
   .input-primary {
-    @apply border-gray-300;
+    @apply border-gray-300 transition-all focus:ring-primary focus:border-primary;
   }
   .input-secondary {
     @apply bg-secondary border-primary placeholder:text-primary;

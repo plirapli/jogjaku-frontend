@@ -10,7 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#facc15',
+        primary: '#D4AF37',
+        primaryHover: '#AA8D2E',
         secondary: '#fefce8',
         secondaryHover: '#C4CFD0',
         accent: '#422006',
@@ -18,6 +19,7 @@ export default {
           light: '#EAEAEA',
           dark: '#7C7C7C',
         },
+        grayHover: '#D4D4D4',
         danger: {
           main: '#E42F2F',
           sub: '#FFCCCC',
