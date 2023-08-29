@@ -28,7 +28,7 @@ authApi.interceptors.response.use(
   (res) => res,
   async (err) => {
     if (err.response.status === 400) {
-      window.location.replace('/')
+      window.location.replace('/login')
     }
     return Promise.reject(err);
   }
