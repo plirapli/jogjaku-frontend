@@ -27,8 +27,8 @@ authApi.interceptors.request.use(
 authApi.interceptors.response.use(
   (res) => res,
   async (err) => {
-    if (err.response.status === 400) {
-      window.location.replace('/')
+    if (!(window.location.href).includes('/login') && err.response.status === 400) {
+      window.location.replace('/login')
     }
     return Promise.reject(err);
   }
