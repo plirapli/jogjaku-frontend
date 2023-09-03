@@ -3,9 +3,7 @@ const Footer = () => {
     <div className='flex px-8 py-6 mt-6 bg-gray-200 text-yellow-950 justify-center'>
       <footer className='max-w-screen-xl footer gap-4 text-primary-content'>
         <div className='gap-y-0.5'>
-          <div className='font-bold text-base text-accent'>
-            Information Technology Club
-          </div>
+          <div className='font-bold text-base text-accent'>JogjaKu</div>
           <div className='text-accent'>
             Universitas Pembangunan Nasional &quot;Veteran&quot; Yogyakarta
           </div>
