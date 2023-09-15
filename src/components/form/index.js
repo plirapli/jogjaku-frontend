@@ -1,5 +1,5 @@
 import Input from './Input';
 import SearchBar from './SearchBar';
-import Select from './SelectOption';
+import SelectOption from './SelectOption';
 
-export { Input, Select, SearchBar };
+export { Input, SelectOption, SearchBar };
