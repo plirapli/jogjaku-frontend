@@ -4,6 +4,7 @@ import CardDestinasi from '../../components/card/CardDestinasi';
 import { useEffect, useState } from 'react';
 import { getAllDestinations } from '../../utils/destination';
 import Loading from '../../components/loading/Loading';
+import { CardSemua } from '../../components/card';
 
 const Destinasi = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,19 +22,14 @@ const Destinasi = () => {
   return (
     <ConstraintLarge>
       <div className='flex items-center justify-between gap-2'>
-        <div>
-          <h1 className='w-full text-2xl font-bold text-left text-primary'>
-            Destinasi
-          </h1>
-          <div className='text-sm text-black text-opacity-50'>
-            Temukan Perjalanan Tak Terlupakan di Destinasi Wisata Kami
-          </div>
-        </div>
-        <Link to='/destinasi'>
+        <h1 className='w-full text-xl font-bold text-center text-[#725201]'>
+          Destinasi
+        </h1>
+        {/* <Link to='/destinasi'>
           <div className='text-sm underline w-max text-black text-opacity-40'>
             Lihat semua
           </div>
-        </Link>
+        </Link> */}
       </div>
       <div className='w-full mt-3'>
         {isLoading ? (
@@ -45,6 +41,7 @@ const Destinasi = () => {
             {destinations.map((destination) => (
               <CardDestinasi key={destination?.id} data={destination} />
             ))}
+            <CardSemua />
           </div>
         )}
         {/* : (
