@@ -21,19 +21,9 @@ const Event = () => {
   return (
     <ConstraintLarge>
       <div className='flex items-center justify-between gap-2'>
-        <div>
-          <h1 className='w-full text-2xl font-bold text-left text-primary'>
-            Event-event
-          </h1>
-          <div className='text-sm text-black text-opacity-50'>
-            Temukan Beragam Acara Seru di Event Wisata Kami
-          </div>
-        </div>
-        <Link to='/event'>
-          <div className='text-sm underline w-max text-black text-opacity-40'>
-            Lihat semua
-          </div>
-        </Link>
+        <h1 className='w-full text-xl font-bold text-center text-[#725201]'>
+          Event
+        </h1>
       </div>
       <div className='w-full mt-3'>
         {isLoading ? (
@@ -45,11 +35,13 @@ const Event = () => {
             {events.map((event) => (
               <CardEvent key={event?.id} event={event} />
             ))}
+            <Link to='/event'>
+              <div className='px-4 py-2 bg-black/10 rounded text-center border transition-all hover:bg-black/20 hover:shadow text-black/50'>
+                Lihat Semua
+              </div>
+            </Link>
           </div>
         )}
-        {/* : (
-           <div className='mt-4 text-center'>Data tidak ditemukan.</div>
-         )} */}
       </div>
     </ConstraintLarge>
   );

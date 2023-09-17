@@ -15,6 +15,14 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 
+  .layout-aktivitas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+
   .clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
