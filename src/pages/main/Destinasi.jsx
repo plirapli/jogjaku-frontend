@@ -58,7 +58,6 @@ const Destinasi = () => {
                 <Tab key={i} as={Fragment}>
                   {({ selected }) => (
                     <button
-                      // onClick={() => changeRegionHandler}
                       className={`w-full rounded-full py-2.5 text-sm leading-5 ring-white focus:outline-none focus:ring-2 ${
                         selected
                           ? 'shadow bg-primary text-white ring-offset-white'

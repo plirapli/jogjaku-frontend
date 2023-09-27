@@ -4,6 +4,7 @@ import Trekking from '../../assets/trekking.svg';
 import Hiking from '../../assets/hiking.svg';
 import Offroad from '../../assets/off_road.svg';
 import Camping from '../../assets/camping.svg';
+import Shopping from '../../assets/belanja.svg';
 
 const Aktivitas = () => {
   const activities = [
@@ -24,8 +25,8 @@ const Aktivitas = () => {
       img: Hiking,
     },
     {
-      name: 'Cinema',
-      img: Trekking,
+      name: 'Berbelanja',
+      img: Shopping,
     },
   ];
   return (
