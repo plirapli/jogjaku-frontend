@@ -17,7 +17,7 @@ const TiketSayaPage = () => {
   }, []);
 
   return (
-    <div className='mt-2 space-y-3'>
+    <div className='mt-2 layout-tiket-aktif'>
       {!isLoading ? (
         tickets?.length > 0 ? (
           tickets?.map((ticket) =>

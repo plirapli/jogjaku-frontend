@@ -197,7 +197,7 @@ const KeranjangPage = () => {
                 onClick={onClickOrderHandle}
                 type='button'
                 disabled={
-                  destinationTicket?.length <= 0 || eventTicket?.length <= 0
+                  destinationTicket?.length <= 0 && eventTicket?.length <= 0
                 }
                 className={`
                   w-full px-5 py-2.5 mt-4
