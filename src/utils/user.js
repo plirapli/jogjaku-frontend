@@ -23,7 +23,7 @@ const getUserOwnProfile = async () =>
 
 const updateUserProfile = async (data) =>
   authApi
-    .put(`${url}/update`, data, {
+    .put(`/edit-profile`, data, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then(({ data }) => data.message)
