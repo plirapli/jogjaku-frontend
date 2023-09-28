@@ -1,10 +1,17 @@
 import { api } from '../config/restApi'
 
-// GET All Destinations
+// GET All Events
 const getAllEvents = async () =>
   api
     .get('/events')
     .then(({ data }) => data.events)
+    .catch(({ response }) => Promise.reject(response));
+
+// GET All Events Group by Month
+const getAllEventsCalendar = async () =>
+  api
+    .get('/events/calendar')
+    .then(({ data }) => data.events2023)
     .catch(({ response }) => Promise.reject(response));
 
 // GET Destination by ID
@@ -20,4 +27,4 @@ const getEventTicket = async (id) =>
     .then(({ data }) => data.event.eventTickets)
     .catch(({ response }) => Promise.reject(response));
 
-export { getAllEvents, getEventByID, getEventTicket }
+export { getAllEvents, getAllEventsCalendar, getEventByID, getEventTicket }

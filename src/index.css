@@ -31,6 +31,18 @@
     align-items: center; */
   }
 
+  .carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
   .clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
