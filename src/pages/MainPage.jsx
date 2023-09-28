@@ -1,5 +1,4 @@
 import { Logo } from '../assets';
-import ConstraintLarge from '../layout/ConstraintLarge';
 import Aktivitas from './main/Aktivitas';
 import Destinasi from './main/Destinasi';
 import Event from './main/Event';

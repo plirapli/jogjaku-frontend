@@ -7,6 +7,13 @@ const getAllEvents = async () =>
     .then(({ data }) => data.events)
     .catch(({ response }) => Promise.reject(response));
 
+// GET 3 Events
+const getAllEventsLimit = async () =>
+  api
+    .get('/events')
+    .then(({ data }) => (data.events).slice(0, 3))
+    .catch(({ response }) => Promise.reject(response));
+
 // GET All Events Group by Month
 const getAllEventsCalendar = async () =>
   api
@@ -27,4 +34,4 @@ const getEventTicket = async (id) =>
     .then(({ data }) => data.event.eventTickets)
     .catch(({ response }) => Promise.reject(response));
 
-export { getAllEvents, getAllEventsCalendar, getEventByID, getEventTicket }
+export { getAllEvents, getAllEventsLimit, getAllEventsCalendar, getEventByID, getEventTicket }

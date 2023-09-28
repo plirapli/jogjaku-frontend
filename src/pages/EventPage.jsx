@@ -25,11 +25,10 @@ const EventPage = () => {
     let filtered;
 
     //ambil data dari input field
-    let { name, type } = searchData;
+    let { name } = searchData;
 
     //ubah format data menjadi lowercase dan tanpa spasi
     let keywordName = name.toLowerCase().trim();
-    let keywordType = type.toLowerCase().trim();
 
     //filter by nama atau nim
     if (keywordName === '') {
@@ -68,7 +67,7 @@ const EventPage = () => {
         <div className='mt-4 form-control w-full'>
           <SearchBar
             onChange={(e) => handleChangeSearch(e)}
-            placeholder='Cari destinasi'
+            placeholder='Cari event'
             name='name'
             value={searchData?.name}
           />

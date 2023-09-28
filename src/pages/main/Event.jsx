@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ConstraintLarge from '../../layout/ConstraintLarge';
 import { CardEvent } from '../../components/card';
 import { useEffect, useState } from 'react';
-import { getAllEvents } from '../../utils/event';
+import { getAllEventsLimit } from '../../utils/event';
 import Loading from '../../components/loading/Loading';
 import EventCalendar from './EventCalendar';
 
@@ -11,7 +11,7 @@ const Event = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    getAllEvents()
+    getAllEventsLimit()
       .then(setEvents)
       .catch(({ data }) => {
         console.log(data);
