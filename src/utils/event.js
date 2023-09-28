@@ -11,7 +11,7 @@ const getAllEvents = async () =>
 const getAllEventsCalendar = async () =>
   api
     .get('/events/calendar')
-    .then(({ data }) => data.events)
+    .then(({ data }) => data.events2023)
     .catch(({ response }) => Promise.reject(response));
 
 // GET Destination by ID

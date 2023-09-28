@@ -36,12 +36,12 @@ const EventCalendar = () => {
         <Icon icon='fluent:chevron-left-16-filled' width='24' />
       </div>
       <div className='carousel w-full space-x-4' ref={calendarRef}>
-        <CardEventKalender />
-        <CardEventKalender />
-        <CardEventKalender />
-        <CardEventKalender />
-        <CardEventKalender />
-        <CardEventKalender />
+        {events.map((monthEvent) => (
+          <CardEventKalender
+            monthEvent={monthEvent}
+            key={Object.keys(monthEvent)[0]}
+          />
+        ))}
       </div>
       <div
         onClick={() => onClickScroll(false)}

@@ -34,9 +34,6 @@ const CardEvent = ({ event }) => {
                 <div>{event?.date}</div>
               </div>
             </div>
-            <div className='flex-1 mt-2 text-sm text-white line-clamp-2 sm:clamp-3'>
-              {event?.description}
-            </div>
           </div>
         </div>
       </div>
