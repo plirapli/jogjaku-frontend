@@ -21,7 +21,7 @@ const CardEventKalender = ({ monthEvent }) => {
 const CardEventDetail = ({ event }) => {
   return (
     <Link to={`/event/${event?.id}`}>
-      <div className='px-3 py-2.5 flex items-center gap-2 bg-[#725201]/10 rounded'>
+      <div className='px-3 py-2.5 flex items-center gap-2 bg-[#725201]/10 rounded transition-all hover:bg-[#725201]/25'>
         <Icon icon='majesticons:calendar-line' color='#725201' width='36' />
         <div>
           <div className='text-sm text-[#725201] font-bold'>{event?.name}</div>
