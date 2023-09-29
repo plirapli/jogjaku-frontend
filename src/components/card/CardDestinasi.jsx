@@ -18,7 +18,7 @@ const CardDestinasi = ({ data }) => {
             {data?.name}
           </div>
           <div className='flex-1 text-opacity-75 text-sm text-[#FFF6DD]'>
-            {data?.name}
+            {data?.regency}
           </div>
           <div className='w-fit rounded-full mt-2.5 px-2 py-0.5 border-2 border-[#FFF6DD] text-xs flex-1 text-[#FFF6DD]'>
             Temple
