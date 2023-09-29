@@ -21,7 +21,7 @@ const CardDestinasi = ({ data }) => {
             {data?.regency}
           </div>
           <div className='w-fit rounded-full mt-2.5 px-2 py-0.5 border-2 border-[#FFF6DD] text-xs flex-1 text-[#FFF6DD]'>
-            Temple
+            {data?.category}
           </div>
         </div>
       </div>
