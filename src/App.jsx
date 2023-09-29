@@ -14,6 +14,7 @@ import {
   DestinasiPage,
   EventPage,
   ProfilePage,
+  AktivitasPage,
   KeranjangPage,
   TiketSayaSemuaPage,
   TiketSayaPendingPage,
@@ -50,6 +51,10 @@ const App = () => {
             <Route element={<Layout.Main />}>
               <Route path='/' element={<MainPage />} />
               <Route path='/destinasi' element={<DestinasiPage />} />
+              <Route path='/event' element={<EventPage />} />
+              <Route path='/aktivitas' element={<AktivitasPage />} />
+              <Route path='/profil' element={<ProfilePage />} />
+              <Route path='/keranjang' element={<KeranjangPage />} />
               <Route
                 path='/destinasi/:destinationID'
                 element={<Layout.Destinasi />}
@@ -61,10 +66,6 @@ const App = () => {
                 <Route index element={<Event.DeskripsiPage />} />
                 <Route path='tiket' element={<Event.TiketPage />} />
               </Route>
-              <Route path='/event' element={<EventPage />} />
-              <Route path='/profil' element={<ProfilePage />} />
-              <Route path='/keranjang' element={<KeranjangPage />} />
-
               <Route path='/tiket-saya' element={<Layout.TiketSaya />}>
                 <Route index element={<TiketSayaSemuaPage />} />
                 <Route path='pending' element={<TiketSayaPendingPage />} />

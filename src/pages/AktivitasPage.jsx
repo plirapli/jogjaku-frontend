@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import CardDestinasi from '../components/card/CardDestinasi';
 import ConstraintLarge from '../layout/ConstraintLarge';
-import { getAllDestinations } from '../utils/destination';
+import { getAllActivites } from '../utils/activities';
 import Loading from '../components/loading/Loading';
-import { Input, SearchBar } from '../components/form';
+import { SearchBar } from '../components/form';
+import CardAktivitas from '../components/card/CardAktivitas';
 
-const DestinasiPage = () => {
+const AktivitasPage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [destinations, setDestinations] = useState([]);
-  const [filteredDestinations, setFilteredDestinations] = useState([]);
+  const [aktivitas, setAktivitas] = useState([]);
+  const [filteredAktivitas, setFilteredAktivitas] = useState([]);
   const [keyword, setKeyword] = useState('');
 
   const handleChangeSearch = (event) => setKeyword(event.target.value);
@@ -19,19 +19,19 @@ const DestinasiPage = () => {
 
     //filter by nama atau nim
     if (searchKeyword !== '') {
-      filtered = destinations.filter((destination) =>
-        destination?.name.toLowerCase()?.includes(searchKeyword)
+      filtered = aktivitas.filter((activity) =>
+        activity?.name.toLowerCase()?.includes(searchKeyword)
       );
     } else {
-      filtered = [...destinations];
+      filtered = [...aktivitas];
     }
 
-    setFilteredDestinations([...filtered]);
-  }, [keyword, destinations]);
+    setFilteredAktivitas([...filtered]);
+  }, [keyword, aktivitas]);
 
   useEffect(() => {
-    getAllDestinations()
-      .then(({ destinations }) => setDestinations(() => [...destinations]))
+    getAllActivites()
+      .then(({ activities }) => setAktivitas(() => [...activities]))
       .catch(({ data }) => {
         console.log(data);
       })
@@ -42,18 +42,16 @@ const DestinasiPage = () => {
     <div className='pt-20'>
       <ConstraintLarge>
         <div className='text-center'>
-          <h1 className='w-full text-2xl font-bold text-primary'>
-            Destinasi Wisata
-          </h1>
+          <h1 className='w-full text-2xl font-bold text-primary'>Aktivitas</h1>
           <p className='text-black text-opacity-40'>
-            Temukan Perjalanan Tak Terlupakan di Destinasi Wisata Kami
+            Jelajahi Aktivitas Tak Terlupakan
           </p>
         </div>
         <div className='mt-4 form-control w-full'>
           <SearchBar
             onChange={(e) => handleChangeSearch(e)}
             value={keyword}
-            placeholder='Cari destinasi'
+            placeholder='Cari aktivitas'
           />
         </div>
         <div className='divider my-3'></div>
@@ -61,10 +59,10 @@ const DestinasiPage = () => {
           <div className='mt-24 flex justify-center items-center'>
             <Loading />
           </div>
-        ) : filteredDestinations.length ? (
+        ) : filteredAktivitas.length ? (
           <div className='mt-4 layout'>
-            {filteredDestinations.map((destination, i) => (
-              <CardDestinasi key={destination?.id} data={destination} />
+            {filteredAktivitas.map((aktivitas, i) => (
+              <CardAktivitas key={aktivitas?.id} data={aktivitas} />
             ))}
           </div>
         ) : (
@@ -75,4 +73,4 @@ const DestinasiPage = () => {
   );
 };
 
-export default DestinasiPage;
+export default AktivitasPage;

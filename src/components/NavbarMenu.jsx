@@ -13,6 +13,7 @@ const NavbarMenu = () => {
     { title: 'Beranda', href: '/' },
     { title: 'Destinasi', href: '/destinasi' },
     { title: 'Event', href: '/event' },
+    { title: 'Aktivitas', href: '/aktivitas' },
   ];
 
   return (

@@ -53,7 +53,7 @@ const EventPage = () => {
   }, []);
 
   return (
-    <div className='pt-24'>
+    <div className='pt-20'>
       <ConstraintLarge>
         <div className='text-center'>
           <h1 className='w-full text-2xl font-bold text-primary'>
