@@ -5,8 +5,10 @@ import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import OverlayNavbar from './overlay/OverlayNavbar';
 import { Logo } from '../assets';
+import { useProfile } from '../hooks/title';
 
 const NavbarMenu = () => {
+  const { profile } = useProfile();
   const listItems = [
     { title: 'Beranda', href: '/' },
     { title: 'Destinasi', href: '/destinasi' },
@@ -31,8 +33,8 @@ const NavbarMenu = () => {
               {/* User info */}
               <span className='sr-only'>Open user menu</span>
               <img
-                className='w-8 h-8 rounded-full transition-all hover:border-2 hover:border-black hover:border-opacity-40'
-                src={Ava}
+                className='w-8 h-8 object-cover rounded-full transition-all ring-1 ring-primary'
+                src={profile?.profilePict || Ava}
                 alt='user photo'
               />
             </Menu.Button>

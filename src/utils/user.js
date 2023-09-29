@@ -23,7 +23,7 @@ const getUserOwnProfile = async () =>
 
 const updateUserProfile = async (data) =>
   authApi
-    .put(`${url}/update`, data, {
+    .put(`/edit-profile`, data, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then(({ data }) => data.message)
@@ -31,7 +31,7 @@ const updateUserProfile = async (data) =>
 
 const updatePassword = async (password) =>
   authApi
-    .post(`${url}/changepassword`, { password })
+    .put('/password', { password })
     .then(({ data }) => data.message)
     .catch(({ response }) => Promise.reject(response));
 
