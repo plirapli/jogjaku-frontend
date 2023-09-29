@@ -87,7 +87,9 @@ const EventPage = () => {
             ))}
           </div>
         ) : (
-          <div className='mt-4 text-center'>Event tidak ditemukan.</div>
+          <div className='mt-4 text-center text-gray-dark'>
+            Event tidak ditemukan.
+          </div>
         )}
       </ConstraintLarge>
     </div>

@@ -68,7 +68,9 @@ const DestinasiPage = () => {
             ))}
           </div>
         ) : (
-          <div className='mt-4 text-center'>Destinasi tidak ditemukan.</div>
+          <div className='mt-4 text-center text-gray-dark'>
+            Destinasi tidak ditemukan.
+          </div>
         )}
       </ConstraintLarge>
     </div>
