@@ -32,7 +32,7 @@ const Aktivitas = () => {
   return (
     <ConstraintLarge>
       <div className='flex items-center justify-between gap-2'>
-        <h1 className='w-full text-xl font-bold text-center text-[#725201]'>
+        <h1 className='w-full text-xl font-bold text-center text-primaryDark'>
           Jelajahi Aktivitas Populer
         </h1>
       </div>

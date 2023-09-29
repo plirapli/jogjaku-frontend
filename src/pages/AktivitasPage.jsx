@@ -69,7 +69,9 @@ const AktivitasPage = () => {
     <div className='pt-20'>
       <ConstraintLarge>
         <div className='text-center'>
-          <h1 className='w-full text-2xl font-bold text-primary'>Aktivitas</h1>
+          <h1 className='w-full text-2xl font-bold text-primaryDark'>
+            Aktivitas
+          </h1>
           <p className='text-black text-opacity-40'>
             Jelajahi Aktivitas Tak Terlupakan
           </p>
