@@ -54,6 +54,10 @@ const App = () => {
               <Route path='/destinasi' element={<DestinasiPage />} />
               <Route path='/event' element={<EventPage />} />
               <Route path='/aktivitas' element={<AktivitasPage />} />
+              <Route
+                path='/aktivitas?filter=:tag'
+                element={<AktivitasPage />}
+              />
               <Route path='/profil' element={<ProfilePage />} />
               <Route path='/keranjang' element={<KeranjangPage />} />
               <Route

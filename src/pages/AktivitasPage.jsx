@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import ConstraintLarge from '../layout/ConstraintLarge';
-import { getAllActivites } from '../utils/activities';
+import { activityTypeOption, getAllActivites } from '../utils/activities';
 import Loading from '../components/loading/Loading';
-import { SearchBar } from '../components/form';
 import CardAktivitas from '../components/card/CardAktivitas';
+import { useSearchParams } from 'react-router-dom';
 
 const AktivitasPage = () => {
+  const [searchParams] = useSearchParams();
+  let tag = searchParams.get('filter') ? searchParams.get('filter') : '';
   const [isLoading, setIsLoading] = useState(true);
   const [aktivitas, setAktivitas] = useState([]);
   const [filteredAktivitas, setFilteredAktivitas] = useState([]);
   const [searchData, setSearchData] = useState({
     name: '',
-    type: '',
+    type: tag,
   });
 
   const handleChangeSearch = (e, key) => {
@@ -23,12 +25,11 @@ const AktivitasPage = () => {
 
   useEffect(() => {
     let filtered;
-
     let { name, type } = searchData;
     let searchKeyword = name.toLowerCase().trim();
     let selectedType = type.toLowerCase().trim();
 
-    //filter by nama atau nim
+    // filter by nama atau nim
     if (searchKeyword !== '') {
       filtered = aktivitas.filter((activity) =>
         activity?.name.toLowerCase()?.includes(searchKeyword)
@@ -37,7 +38,7 @@ const AktivitasPage = () => {
       filtered = [...aktivitas];
     }
 
-    //filter by divisi
+    // filter by divisi
     if (selectedType !== '') {
       filtered = filtered.filter((activity) => {
         return activity?.tag.toLowerCase().includes(selectedType);
@@ -55,15 +56,6 @@ const AktivitasPage = () => {
       })
       .finally(() => setIsLoading(false));
   }, []);
-
-  const selectValue = [
-    '',
-    'Trekking',
-    'Camping',
-    'Off Road',
-    'Rekreasi Olahraga',
-    'Berbelanja',
-  ];
 
   return (
     <div className='pt-20'>
@@ -86,11 +78,12 @@ const AktivitasPage = () => {
           />
           <select
             onChange={(e) => handleChangeSearch(e, 'type')}
+            value={searchData.type}
             className='bg-gray-50 border-l-0 border-gray-300 rounded-r-lg text-gray-900 text-sm focus:ring-0 focus:border-gray-300 block p-2.5'
           >
-            {selectValue.map((name, i) => (
-              <option className='capitalize' key={i} value={name}>
-                {name ? name : 'Semua'}
+            {activityTypeOption.map(({ name, value }, i) => (
+              <option className='capitalize' key={i} value={value}>
+                {name}
               </option>
             ))}
           </select>
@@ -107,7 +100,9 @@ const AktivitasPage = () => {
             ))}
           </div>
         ) : (
-          <div className='mt-4 text-center'>Aktivitas tidak ditemukan.</div>
+          <div className='mt-4 text-center text-gray-dark'>
+            Aktivitas tidak ditemukan.
+          </div>
         )}
       </ConstraintLarge>
     </div>
