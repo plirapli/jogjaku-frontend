@@ -21,7 +21,7 @@ const EventPage = () => {
     });
   };
 
-  useEffect(() => {
+  const filterHandler = () => {
     let filtered;
 
     //ambil data dari input field
@@ -41,6 +41,10 @@ const EventPage = () => {
     }
 
     setFilteredEvents([...filtered]);
+  };
+
+  useEffect(() => {
+    filterHandler();
   }, [searchData, events]);
 
   useEffect(() => {
@@ -83,7 +87,7 @@ const EventPage = () => {
             ))}
           </div>
         ) : (
-          <div className='mt-4 text-center'>Data tidak ditemukan.</div>
+          <div className='mt-4 text-center'>Event tidak ditemukan.</div>
         )}
       </ConstraintLarge>
     </div>
