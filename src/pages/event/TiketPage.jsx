@@ -25,7 +25,7 @@ const TiketPage = () => {
         </>
       ) : (
         <div className='mt-4 flex flex-col gap-2 items-center'>
-          <div className='font-bold text-center text-2xl text-[#725201] drop-shadow-md'>
+          <div className='font-bold text-center text-2xl text-primaryDark drop-shadow-md'>
             Gratis Tiket Masuk
           </div>
           <img className='w-96' src={FreeTicketState} alt='' />

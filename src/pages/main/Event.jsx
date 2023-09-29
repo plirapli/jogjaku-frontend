@@ -22,7 +22,7 @@ const Event = () => {
   return (
     <ConstraintLarge>
       <div className='mb-3 flex items-center justify-between gap-2'>
-        <h1 className='w-full text-xl font-bold text-center text-[#725201]'>
+        <h1 className='w-full text-xl font-bold text-center text-primaryDark'>
           Event
         </h1>
       </div>

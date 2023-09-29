@@ -14,7 +14,7 @@ const CardEvent = ({ event }) => {
           alt=''
           className='absolute w-full sm:w-52 h-full object-cover'
         />
-        <div className='z-10 w-full flex pl-4  pr-4 py-3 bg-gradient-to-t from-30% sm:bg-gradient-to-l sm:from-85% from-[#725201]'>
+        <div className='z-10 w-full flex pl-4  pr-4 py-3 bg-gradient-to-t from-30% sm:bg-gradient-to-l sm:from-85% from-primaryDark'>
           <div className='sm:min-w-[15%]'></div>
           <div className='flex flex-col'>
             <div className='w-full text-base sm:text-lg capitalize font-semibold clamp text-white'>

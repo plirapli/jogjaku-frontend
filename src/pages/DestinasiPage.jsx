@@ -42,7 +42,7 @@ const DestinasiPage = () => {
     <div className='pt-20'>
       <ConstraintLarge>
         <div className='text-center'>
-          <h1 className='w-full text-2xl font-bold text-primary'>
+          <h1 className='w-full text-2xl font-bold text-primaryDark'>
             Destinasi Wisata
           </h1>
           <p className='text-black text-opacity-40'>

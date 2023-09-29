@@ -13,7 +13,7 @@ const CardDestinasi = ({ data }) => {
           alt=''
           className='absolute object-cover h-full w-full'
         />
-        <div className='z-10 flex flex-col p-4 bg-gradient-to-t from-[#725201]'>
+        <div className='z-10 flex flex-col p-4 bg-gradient-to-t from-primaryDark'>
           <div className='text-lg text-white capitalize font-bold clamp'>
             {data?.name}
           </div>
