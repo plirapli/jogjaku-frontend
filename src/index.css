@@ -117,7 +117,7 @@
   /* End Input Component */
 
   .nav {
-    @apply block py-2 pl-3 pr-4 rounded md:p-0;
+    @apply block py-2 pl-3 pr-4 rounded md:p-0 text-primaryDark transition-all;
   }
 
   .nav-active {

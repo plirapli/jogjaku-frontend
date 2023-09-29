@@ -10,7 +10,7 @@ const Aktivitas = () => {
           Jelajahi Aktivitas Populer
         </h1>
       </div>
-      <div className='w-full mt-3 layout-aktivitas'>
+      <div className='w-full mt-4 layout-aktivitas'>
         {activityType.map((activity) => (
           <CardThumbnailAktivitas key={activity.value} activity={activity} />
         ))}
