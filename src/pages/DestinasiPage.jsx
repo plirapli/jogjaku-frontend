@@ -3,7 +3,7 @@ import CardDestinasi from '../components/card/CardDestinasi';
 import ConstraintLarge from '../layout/ConstraintLarge';
 import { getAllDestinations } from '../utils/destination';
 import Loading from '../components/loading/Loading';
-import { Input, SearchBar } from '../components/form';
+import { SearchBar } from '../components/form';
 
 const DestinasiPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,10 +39,10 @@ const DestinasiPage = () => {
   }, []);
 
   return (
-    <div className='pt-24'>
+    <div className='pt-20'>
       <ConstraintLarge>
         <div className='text-center'>
-          <h1 className='w-full text-2xl font-bold text-primary'>
+          <h1 className='w-full text-2xl font-bold text-primaryDark'>
             Destinasi Wisata
           </h1>
           <p className='text-black text-opacity-40'>
@@ -68,7 +68,7 @@ const DestinasiPage = () => {
             ))}
           </div>
         ) : (
-          <div className='mt-4 text-center'>Data tidak ditemukan.</div>
+          <div className='mt-4 text-center'>Destinasi tidak ditemukan.</div>
         )}
       </ConstraintLarge>
     </div>

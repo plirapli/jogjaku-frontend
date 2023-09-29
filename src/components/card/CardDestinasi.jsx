@@ -13,15 +13,15 @@ const CardDestinasi = ({ data }) => {
           alt=''
           className='absolute object-cover h-full w-full'
         />
-        <div className='z-10 flex flex-col p-4 bg-gradient-to-t from-[#725201]'>
+        <div className='z-10 flex flex-col p-4 bg-gradient-to-t from-primaryDark'>
           <div className='text-lg text-white capitalize font-bold clamp'>
             {data?.name}
           </div>
           <div className='flex-1 text-opacity-75 text-sm text-[#FFF6DD]'>
-            {data?.name}
+            {data?.regency}
           </div>
           <div className='w-fit rounded-full mt-2.5 px-2 py-0.5 border-2 border-[#FFF6DD] text-xs flex-1 text-[#FFF6DD]'>
-            Temple
+            {data?.category}
           </div>
         </div>
       </div>

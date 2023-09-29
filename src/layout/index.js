@@ -4,6 +4,7 @@ const Main = lazy(() => import('./LayoutMain'))
 const Login = lazy(() => import('./LayoutAuth'))
 const Destinasi = lazy(() => import('./DestinasiLayout'))
 const Event = lazy(() => import('./EventLayout'))
+const Aktivitas = lazy(() => import('./AktivitasLayout'))
 const TiketSaya = lazy(() => import('./LayoutTiketSaya'))
 const ConstraintLarge = lazy(() => import('./ConstraintLarge'))
 
@@ -13,5 +14,6 @@ export {
   Login,
   Destinasi,
   Event,
+  Aktivitas,
   TiketSaya,
 };

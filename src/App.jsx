@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { getLocalAccessToken } from './utils/auth';
 import { getUserOwnProfile } from './utils/user';
@@ -7,6 +7,7 @@ import { useProfile } from './hooks/title';
 import * as Layout from './layout/';
 import * as AuthPage from './pages/auth';
 import * as Destinasi from './pages/destinasi';
+import * as Aktivitas from './pages/aktivitas';
 import * as Event from './pages/event';
 import ConstraintLarge from './layout/ConstraintLarge';
 import {
@@ -14,6 +15,7 @@ import {
   DestinasiPage,
   EventPage,
   ProfilePage,
+  AktivitasPage,
   KeranjangPage,
   TiketSayaSemuaPage,
   TiketSayaPendingPage,
@@ -50,6 +52,10 @@ const App = () => {
             <Route element={<Layout.Main />}>
               <Route path='/' element={<MainPage />} />
               <Route path='/destinasi' element={<DestinasiPage />} />
+              <Route path='/event' element={<EventPage />} />
+              <Route path='/aktivitas' element={<AktivitasPage />} />
+              <Route path='/profil' element={<ProfilePage />} />
+              <Route path='/keranjang' element={<KeranjangPage />} />
               <Route
                 path='/destinasi/:destinationID'
                 element={<Layout.Destinasi />}
@@ -61,10 +67,12 @@ const App = () => {
                 <Route index element={<Event.DeskripsiPage />} />
                 <Route path='tiket' element={<Event.TiketPage />} />
               </Route>
-              <Route path='/event' element={<EventPage />} />
-              <Route path='/profil' element={<ProfilePage />} />
-              <Route path='/keranjang' element={<KeranjangPage />} />
-
+              <Route
+                path='/aktivitas/:activityID'
+                element={<Layout.Aktivitas />}
+              >
+                <Route index element={<Aktivitas.DeskripsiPage />} />
+              </Route>
               <Route path='/tiket-saya' element={<Layout.TiketSaya />}>
                 <Route index element={<TiketSayaSemuaPage />} />
                 <Route path='pending' element={<TiketSayaPendingPage />} />

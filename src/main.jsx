@@ -7,8 +7,10 @@ import { ProfileProvider } from './context/ProfileProvider.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <ProfileProvider>
-      <App />
-    </ProfileProvider>
+    <React.StrictMode>
+      <ProfileProvider>
+        <App />
+      </ProfileProvider>
+    </React.StrictMode>
   </BrowserRouter>
 );
