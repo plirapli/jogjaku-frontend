@@ -31,7 +31,7 @@ const updateUserProfile = async (data) =>
 
 const updatePassword = async (password) =>
   authApi
-    .post(`${url}/changepassword`, { password })
+    .put('/password', { password })
     .then(({ data }) => data.message)
     .catch(({ response }) => Promise.reject(response));
 

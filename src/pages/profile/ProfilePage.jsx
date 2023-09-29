@@ -16,6 +16,10 @@ const ProfilePage = () => {
   const [newConfirmPassword, setNewConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isModalPasswordOpen, setIsModalPasswordOpen] = useState(false);
+  const [passwordError, setPasswordError] = useState({
+    isError: false,
+    msg: '',
+  });
 
   const closeModalPassword = () => setIsModalPasswordOpen(false);
   const onChangeFormHandler = (e, key) =>
@@ -44,14 +48,29 @@ const ProfilePage = () => {
   const onSubmitNewPasswordHandler = (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
-    updatePassword(newPassword)
-      .then(() => setNewPassword(''))
-      .catch(({ data }) => console.log(data.message))
-      .finally(() => {
-        setIsModalPasswordOpen(false);
-        setIsLoading(false);
+    if (newPassword === newConfirmPassword) {
+      setIsLoading(true);
+      updatePassword(newPassword)
+        .then(() => {
+          setNewPassword('');
+          setNewConfirmPassword('');
+        })
+        .catch(({ data }) => {
+          setPasswordError({
+            isError: true,
+            msg: data.message,
+          });
+        })
+        .finally(() => {
+          closeModalPassword();
+          setIsLoading(false);
+        });
+    } else {
+      setPasswordError({
+        isError: true,
+        msg: 'Konfirmasi kata sandi berbeda dengan kata sandi baru',
       });
+    }
   };
 
   useEffect(() => {
@@ -162,6 +181,7 @@ const ProfilePage = () => {
                 value={newPassword}
                 color='primary'
                 placeholder='Masukkan kata sandi baru'
+                required
               />
             </div>
             <div className='mt-2.5'>
@@ -171,8 +191,14 @@ const ProfilePage = () => {
                 value={newConfirmPassword}
                 color='primary'
                 placeholder='Konfirmasi kata sandi baru'
+                required
               />
             </div>
+            {passwordError.isError && (
+              <div className='mt-1 text-sm text-danger-main'>
+                {passwordError.msg}
+              </div>
+            )}
             <div className='mt-4 flex gap-2'>
               <Button
                 type='button'
