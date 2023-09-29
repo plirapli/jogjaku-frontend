@@ -8,7 +8,7 @@ import CardEventBeliTiket from "./CardEventBeliTiket";
 import CardEventTransaksiItem from "./CardEventTransaksiItem";
 import CardEventTiketAktif from "./CardEventTiketAktif";
 import CardSemua from "./CardSemua";
-import CardAktivitas from "./CardAktivitas";
+import CardThumbnailAktivitas from "./CardThumbnailAktivitas";
 import CardEventKalender from "./CardEventKalender";
 
 export {
@@ -22,6 +22,6 @@ export {
   CardEventTransaksiItem,
   CardEventTiketAktif,
   CardSemua,
-  CardAktivitas,
+  CardThumbnailAktivitas,
   CardEventKalender
 }

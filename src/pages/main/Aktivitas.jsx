@@ -1,5 +1,5 @@
 import ConstraintLarge from '../../layout/ConstraintLarge';
-import { CardAktivitas } from '../../components/card';
+import { CardThumbnailAktivitas } from '../../components/card';
 import Trekking from '../../assets/trekking.svg';
 import Hiking from '../../assets/hiking.svg';
 import Offroad from '../../assets/off_road.svg';
@@ -54,7 +54,7 @@ const Aktivitas = () => {
           </div> */}
         {/* )} */}
         {activities.map((activity) => (
-          <CardAktivitas
+          <CardThumbnailAktivitas
             key={activity.name}
             name={activity.name}
             image={activity.img}
