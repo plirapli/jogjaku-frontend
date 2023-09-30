@@ -19,11 +19,11 @@ const getAllDestinationsPerRegion = async () => {
       const bantul = destinations.filter((destination) => destination.regency === 'Bantul')
       const allDestinations = {
         semua: [...destinations],
-        sleman: [...sleman],
         yogyakarta: [...yogyakarta],
-        gk: [...gk],
+        sleman: [...sleman],
         kp: [...kp],
         bantul: [...bantul],
+        gk: [...gk],
       }
       return allDestinations
     })
