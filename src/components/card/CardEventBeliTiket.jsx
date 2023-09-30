@@ -38,7 +38,7 @@ const CardEventBeliTiket = ({ name, ticket }) => {
         <div className='w-full flex gap-4 justify-between'>
           <div>
             <div className='font-medium'>{name}</div>
-            <div className='mt-1.5 text-xs px-3 rounded-full border-2 border-gray-300'>
+            <div className='w-fit mt-1.5 text-xs px-3 rounded-full border-2 border-gray-300'>
               {ticket?.date}
             </div>
           </div>

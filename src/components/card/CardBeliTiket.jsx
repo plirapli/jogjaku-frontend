@@ -51,7 +51,7 @@ const CardBeliTiket = ({ name, ticket, date }) => {
               {ticket?.touristType}
             </div>
           </div>
-          <div className='text-lg font-medium text-primary'>
+          <div className='w-fit text-lg font-medium text-primary'>
             Rp{ticket?.price}
           </div>
         </div>
