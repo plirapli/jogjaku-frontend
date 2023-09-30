@@ -27,7 +27,7 @@ const Event = () => {
         </h1>
       </div>
       <EventCalendar />
-      <div className='w-full mt-5'>
+      {/* <div className='w-full mt-5'>
         {isLoading ? (
           <div className='mt-24 flex justify-center items-center'>
             <Loading />
@@ -48,7 +48,7 @@ const Event = () => {
             </Link>
           </div>
         )}
-      </div>
+      </div> */}
     </ConstraintLarge>
   );
 };
