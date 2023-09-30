@@ -18,7 +18,7 @@ const CardEventTiketAktif = ({ ticket }) => {
   return (
     <div className='px-3 py-2 border rounded-md'>
       <div className='flex flex-col-reverse gap-1'>
-        <div className='w-full flex flex-col gap-1'>
+        <div className='flex flex-col gap-1'>
           <div className='text-sm font-medium text-primary'>
             {ticket?.eventTicket?.event?.name}&nbsp;(
             {ticket?.eventTicket?.seatType || 'Umum'})
