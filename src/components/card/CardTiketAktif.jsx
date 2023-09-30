@@ -1,12 +1,11 @@
-import { Icon } from '@iconify/react';
-import { formatDateLongMonth } from '../../utils/dateConverter';
-import QRCode from '../../utils/qrcode';
 import { createRef, useEffect } from 'react';
+import { formatDateLongMonth } from '../../utils/dateConverter';
+import { Icon } from '@iconify/react';
+import QRCode from '../../utils/qrcode';
 
 const CardTiketAktif = ({ ticket }) => {
   const date = formatDateLongMonth(ticket?.createdAt);
   const qrCodeRef = createRef();
-  // const generateQRCode = (text) => new QRCode(text)
   useEffect(() => {
     qrCodeRef.current.innerHTML = '';
     new QRCode(qrCodeRef.current, {
