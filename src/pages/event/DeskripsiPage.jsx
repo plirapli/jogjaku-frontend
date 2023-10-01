@@ -23,15 +23,18 @@ const DeskripsiPage = () => {
           <p>{event?.organizer}</p>
         </div>
       </div>
-      {/* <div className='mt-4'>
-        <h2 className='text-lg font-medium'>Lokasi</h2>
-        <div className='mt-1.5 flex flex-col gap-2'>
+      <div className='mt-4'>
+        <h2 className='font-bold text-primaryDark'>Lokasi</h2>
+        <div className='mt-1 rounded-xl overflow-hidden border-2 border-primary'>
           <iframe
-            height='170'
-            src={`https://maps.google.com/maps?q='${lat}','${long}'&hl=es&z=14&amp;output=embed`}
+            className='w-full'
+            src={event?.location}
+            allowFullScreen=''
+            loading='lazy'
+            referrerPolicy='no-referrer-when-downgrade'
           ></iframe>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
