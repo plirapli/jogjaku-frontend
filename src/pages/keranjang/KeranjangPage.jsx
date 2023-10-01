@@ -90,8 +90,8 @@ const KeranjangPage = () => {
           <div className='w-full'>
             {/* Destinasi */}
             <div className='w-full space-y-3'>
-              <div className='text-sm font-bold -mb-1.5'>
-                Keranjang Destinasi
+              <div className='text-primaryDark font-bold -mb-1.5'>
+                Destinasi
               </div>
               {isLoading ? (
                 <div className='mt-4 flex justify-center'>
@@ -121,7 +121,7 @@ const KeranjangPage = () => {
 
             {/* Event */}
             <div className='w-full space-y-3'>
-              <div className='text-sm font-bold -mb-1.5'>Keranjang Event</div>
+              <div className='text-primaryDark font-bold -mb-1.5'>Event</div>
               {isLoading ? (
                 <div className='mt-4 flex justify-center'>
                   <Loading />
