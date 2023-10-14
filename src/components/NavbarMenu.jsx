@@ -35,43 +35,45 @@ const NavbarMenu = () => {
           </ul>
         </div>
 
-        <Link
-          to='keranjang'
-          className='flex items-center gap-1.5 
+        <div className='flex items-center gap-4'>
+          <Link
+            to='keranjang'
+            className='flex items-center gap-1.5 
                      text-sm text-primary
                      transition-all hover:text-primaryHover'
-        >
-          <Icon icon='mdi:cart-outline' width='24' />
-        </Link>
-
-        {/* Profil */}
-        <Menu as='div' className='min-w-fit relative flex items-center'>
-          <div className='flex items-center'>
-            <Menu.Button className='focus:outline-none '>
-              {/* User info */}
-              <span className='sr-only'>Open user menu</span>
-              <img
-                className='w-8 h-8 object-cover rounded-full transition-all ring-1 ring-black/40'
-                src={profile?.profilePict || Ava}
-                alt='user photo'
-              />
-            </Menu.Button>
-          </div>
-
-          <Transition
-            as={Fragment}
-            enter='transition ease-out duration-100'
-            enterFrom='transform opacity-0 scale-95'
-            enterTo='transform opacity-100 scale-100'
-            leave='transition ease-in duration-75'
-            leaveFrom='transform opacity-100 scale-100'
-            leaveTo='transform opacity-0 scale-95'
           >
-            <Menu.Items className='absolute right-0 origin-top-right'>
-              <OverlayNavbar />
-            </Menu.Items>
-          </Transition>
-        </Menu>
+            <Icon icon='mdi:cart-outline' width='24' />
+          </Link>
+
+          {/* Profil */}
+          <Menu as='div' className='min-w-fit relative flex items-center'>
+            <div className='flex items-center'>
+              <Menu.Button className='focus:outline-none '>
+                {/* User info */}
+                <span className='sr-only'>Open user menu</span>
+                <img
+                  className='w-8 h-8 object-cover rounded-full transition-all ring-1 ring-black/40'
+                  src={profile?.profilePict || Ava}
+                  alt='user photo'
+                />
+              </Menu.Button>
+            </div>
+
+            <Transition
+              as={Fragment}
+              enter='transition ease-out duration-100'
+              enterFrom='transform opacity-0 scale-95'
+              enterTo='transform opacity-100 scale-100'
+              leave='transition ease-in duration-75'
+              leaveFrom='transform opacity-100 scale-100'
+              leaveTo='transform opacity-0 scale-95'
+            >
+              <Menu.Items className='absolute right-0 origin-top-right'>
+                <OverlayNavbar />
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </div>
       </div>
     </nav>
   );
