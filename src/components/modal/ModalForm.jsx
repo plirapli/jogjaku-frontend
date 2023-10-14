@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react';
 const ModalForm = ({ show, title, children }) => {
   return (
     <Transition appear show={show} as={Fragment}>
-      <div className='relative z-10'>
+      <div className='relative z-50'>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'

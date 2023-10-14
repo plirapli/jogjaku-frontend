@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react';
 import { Link, NavLink } from 'react-router-dom';
 import { Ava } from '../assets';
 import { Menu, Transition } from '@headlessui/react';
@@ -29,7 +28,7 @@ const NavbarMenu = () => {
           as='div'
           className='min-w-fit relative flex items-center md:order-2'
         >
-          <div>
+          <div className='flex items-center'>
             <Menu.Button className='focus:outline-none '>
               {/* User info */}
               <span className='sr-only'>Open user menu</span>

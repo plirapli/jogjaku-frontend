@@ -17,7 +17,7 @@ const TiketSayaPage = () => {
   }, []);
 
   return (
-    <div className='mt-2 layout-tiket-aktif'>
+    <div className='mt-2 flex flex-col gap-3'>
       {!isLoading ? (
         tickets?.length > 0 ? (
           tickets?.map((ticket) =>

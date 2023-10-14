@@ -28,8 +28,13 @@ const EventLayout = () => {
           alt=''
           className='absolute w-full object-cover h-full bg-gray-200'
         />
-        <h1 className='w-full text-center p-4 z-10 text-white text-4xl font-bold bg-black bg-opacity-25'>
-          {event?.name || 'Title'}
+        <h1 className='w-full py-4 z-10 backdrop-blur-lg bg-opacity-0'>
+          <ConstraintLarge paddingBottom={false}>
+            <div className='text-white text-xl font-bold'>
+              {event?.name || 'Title'}
+            </div>
+            <div className='text-white text-opacity-70'>{event?.organizer}</div>
+          </ConstraintLarge>
         </h1>
       </div>
 
