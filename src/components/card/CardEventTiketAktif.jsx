@@ -1,42 +1,59 @@
-import { createRef, useEffect } from 'react';
+import { useState } from 'react';
 import { formatDateLongMonth } from '../../utils/dateConverter';
-import { Icon } from '@iconify/react';
-import QRCode from '../../utils/qrcode';
+import mega_mendung from '../../assets/pattern-mega-mendung.png';
+import ModalEventTiketAktif from '../modal/ModalEventTiketAktif';
 
 const CardEventTiketAktif = ({ ticket }) => {
-  const date = formatDateLongMonth(ticket?.createdAt);
-  const qrCodeRef = createRef();
-  useEffect(() => {
-    qrCodeRef.current.innerHTML = '';
-    new QRCode(qrCodeRef.current, {
-      text: ticket?.id,
-      width: 128,
-      height: 128,
-    });
-  }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toggleRef, setToggleRef] = useState(false);
+  const date = formatDateLongMonth(ticket?.date);
+  const openModalHandler = () => {
+    setToggleRef((prev) => !prev);
+    setIsModalOpen(true);
+  };
+  const closeModalHandler = () => setIsModalOpen(false);
 
   return (
-    <div className='px-3 py-2 border rounded-md'>
-      <div className='flex flex-col-reverse gap-1'>
-        <div className='flex flex-col items-start gap-1'>
-          <div className='text-sm font-medium text-primary'>
-            {ticket?.eventTicket?.event?.name}&nbsp;(
-            {ticket?.eventTicket?.seatType || 'Umum'})
+    <div>
+      <div
+        className='z-10 relative overflow-hidden bg-primary bg-opacity-5
+                 flex gap-4 items-center justify-between px-3 py-2.5 
+                 border border-primary rounded-md'
+      >
+        <div className='-z-10 left-0 absolute opacity-[8%] w-full h-full bg-gradient-to-r from-black/0 to- rounded-r-full overflow-hidden'>
+          <img src={mega_mendung} alt='' className='w-full object-cover' />
+        </div>
+        <div className='flex flex-col gap-1'>
+          <div className='text-gray-dark min-w-fit text-xs'>{date}</div>
+          <div className='text-sm font-medium text-primaryDark'>
+            {ticket?.eventTicket?.event?.name}
           </div>
-          <div className='text-xs px-2 rounded-full border border-primary text-primary capitalize'>
-            Event
+          <div className='mt-0.5 flex gap-2 items-center'>
+            <div className='text-xs px-2 rounded bg-primary/30 text-primaryDark/75 capitalize'>
+              Destinasi
+            </div>
+            <div className='text-xs px-2 rounded bg-primary/30 text-primaryDark/75 capitalize'>
+              {ticket?.eventTicket?.seatType}
+            </div>
           </div>
         </div>
-        <div className='text-gray-dark min-w-fit text-xs'>{date}</div>
+        {ticket?.id && (
+          <button
+            onClick={openModalHandler}
+            className='mt-0.5 w-fit px-4 py-2 bg-primary text-white text-sm rounded-md
+            transition-all hover:text-opacity-100 hover:bg-primaryHover'
+          >
+            Lihat Detail
+          </button>
+        )}
       </div>
-      <div className='flex flex-col items-center'>
-        <div className='mt-3' ref={qrCodeRef}></div>
-        <div className='mt-0.5 font-bold text-lg font-mono'>{ticket?.id}</div>
-      </div>
-      <div className='mt-1 flex items-center gap-0.5 text-gray-500'>
-        <Icon icon='mdi:clock-outline' width='16' />
-        <span className='text-xs'>{ticket?.eventTicket?.dateTime}</span>
-      </div>
+
+      <ModalEventTiketAktif
+        activeRef={toggleRef}
+        show={isModalOpen}
+        closeHandler={closeModalHandler}
+        ticket={ticket}
+      />
     </div>
   );
 };
