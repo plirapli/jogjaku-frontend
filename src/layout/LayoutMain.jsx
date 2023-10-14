@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { NavbarMenu, Footer } from '../components/';
+import { Footer } from '../components/';
 import { Suspense } from 'react';
 import Loading from '../components/loading/Loading';
+import { BottomNavbarMenu, TopNavbarMenu } from '../components/NavbarMenu';
 
 const LayoutMain = () => {
   return (
     <div className='min-h-screen bg-white flex flex-col'>
-      <NavbarMenu />
+      <TopNavbarMenu />
       <div className='flex-1'>
         <Suspense
           fallback={
@@ -19,6 +20,7 @@ const LayoutMain = () => {
         </Suspense>
       </div>
       <Footer />
+      <BottomNavbarMenu />
     </div>
   );
 };

@@ -22,6 +22,7 @@ import {
   TiketSayaAktifPage,
 } from './pages';
 import Loading from './components/loading/Loading';
+import { Icon } from '@iconify/react';
 
 const App = () => {
   const { profile, setProfile } = useProfile();
