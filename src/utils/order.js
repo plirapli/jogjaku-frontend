@@ -26,7 +26,7 @@ const getOrderPending = async () =>
 const getActiveTicket = async () =>
   authApi
     .get('/order-history')
-    .then(({ data }) => data.activeTicket)
+    .then(({ data }) => sortDateObject(data.activeTicket))
     .catch(({ response }) => Promise.reject(response));
 
 export { addOrder, getOrderHistory, getOrderPending, getActiveTicket }
