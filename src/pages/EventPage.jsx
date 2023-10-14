@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { CardEvent } from '../components/card/';
 import ConstraintLarge from '../layout/ConstraintLarge';
 import Loading from '../components/loading/Loading';
-import { getAllEvents } from '../utils/event';
+import { getAllEvents, getAllEventsFiltered } from '../utils/event';
 import { SearchBar } from '../components/form';
 
 const EventPage = () => {
@@ -48,10 +48,10 @@ const EventPage = () => {
   }, [searchData, events]);
 
   useEffect(() => {
-    getAllEvents()
+    getAllEventsFiltered()
       .then(setEvents)
-      .catch(({ data }) => {
-        console.log(data);
+      .catch((data) => {
+        console.error(data);
       })
       .finally(() => setIsLoading(false));
   }, []);
