@@ -9,6 +9,10 @@
     font-family: 'Poppins', system-ui, sans-serif;
   }
 
+  .min-w-calendar-lg {
+    min-width: calc(100% / 3 - 11px);
+  }
+
   .layout {
     display: grid;
     gap: 1rem;
@@ -34,6 +38,7 @@
   .carousel {
     display: flex;
     overflow-x: scroll;
+    gap: 16px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -ms-overflow-style: none;

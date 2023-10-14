@@ -25,7 +25,7 @@ const EventCalendar = () => {
   };
 
   return (
-    <div className='flex gap-3 items-center'>
+    <div className='flex gap-4 items-center'>
       <div
         onClick={() => onClickScroll(true)}
         className={`p-1.5 border-2 
@@ -35,7 +35,7 @@ const EventCalendar = () => {
       >
         <Icon icon='fluent:chevron-left-16-filled' width='24' />
       </div>
-      <div className='carousel w-full space-x-4' ref={calendarRef}>
+      <div className='carousel w-full' ref={calendarRef}>
         {events.map((monthEvent) => (
           <CardEventKalender
             monthEvent={monthEvent}

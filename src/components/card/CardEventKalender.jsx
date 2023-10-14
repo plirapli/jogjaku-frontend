@@ -5,7 +5,7 @@ const CardEventKalender = ({ monthEvent }) => {
   const month = Object.keys(monthEvent)[0];
 
   return (
-    <div className='min-w-full lg:min-w-[32.1%] rounded-lg overflow-hidden border border-gray-300'>
+    <div className='min-w-full lg:min-w-calendar-lg rounded-lg overflow-hidden border border-gray-300'>
       <div className='text-center px-4 py-2 bg-primaryDark text-lg font-bold text-white'>
         {month}
       </div>
