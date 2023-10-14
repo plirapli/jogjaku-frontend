@@ -41,15 +41,6 @@ const OverlayNavbar = () => {
           </li>
           <li>
             <Link
-              to='keranjang'
-              className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-            >
-              <Icon icon='mdi:cart-outline' width='16' />
-              Keranjang
-            </Link>
-          </li>
-          <li>
-            <Link
               to='tiket-saya'
               className='flex items-center gap-1.5 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
             >
