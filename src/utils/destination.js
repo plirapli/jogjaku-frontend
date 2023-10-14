@@ -1,5 +1,32 @@
 import { api } from '../config/restApi'
 
+const regencyOption = [
+  {
+    name: 'Semua Lokasi',
+    value: '',
+  },
+  {
+    name: 'Sleman',
+    value: 'sleman',
+  },
+  {
+    name: 'Kota Yogyakarta',
+    value: 'kota yogyakarta',
+  },
+  {
+    name: 'Gunung Kidul',
+    value: 'gunung kidul',
+  },
+  {
+    name: 'Bantul',
+    value: 'bantul',
+  },
+  {
+    name: 'Kulon Progo',
+    value: 'kulon progo',
+  },
+];
+
 // GET All Destinations
 const getAllDestinations = async () =>
   api
@@ -43,4 +70,4 @@ const getDestinationTicket = async (id) =>
     .then(({ data }) => data.destination.destinationTickets)
     .catch(({ response }) => Promise.reject(response));
 
-export { getAllDestinations, getAllDestinationsPerRegion, getDestinationByID, getDestinationTicket }
+export { regencyOption, getAllDestinations, getAllDestinationsPerRegion, getDestinationByID, getDestinationTicket }
